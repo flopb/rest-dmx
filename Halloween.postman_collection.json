@@ -1,0 +1,123 @@
+{
+	"info": {
+		"_postman_id": "16be14a1-3874-4ece-9b78-cf2a9ff2d1b5",
+		"name": "Halloween",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "JSON Set Detail",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n   {\r\n      \"fixtures\":[\r\n         \"rgb1\",\r\n         \"rgb2\"\r\n      ],\r\n      \"channels\": {\r\n\t      \"1\":250,\r\n\t      \"2\":40,\r\n\t      \"3\":180,\r\n\t      \"4\":0,\r\n\t      \"5\":0,\r\n\t      \"6\":0,\r\n\t      \"7\":0,\r\n\t      \"8\":0\r\n      }\r\n   }\r\n]"
+				},
+				"url": {
+					"raw": "http://192.168.178.53:8081/set_from_json",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"178",
+						"53"
+					],
+					"port": "8081",
+					"path": [
+						"set_from_json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lights On!",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://192.168.178.53:8081/",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"178",
+						"53"
+					],
+					"port": "8081",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calling a Script",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://192.168.178.53:8081/playscript?script=video",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"178",
+						"53"
+					],
+					"port": "8081",
+					"path": [
+						"playscript"
+					],
+					"query": [
+						{
+							"key": "script",
+							"value": "video"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All OFF",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n   {\r\n      \"fixtures\":[\r\n         \"rgb1\",\r\n         \"rgb2\"\r\n      ],\r\n      \"channels\": {\r\n\t      \"1\":0,\r\n\t      \"2\":0,\r\n\t      \"3\":0,\r\n\t      \"4\":0,\r\n\t      \"5\":0,\r\n\t      \"6\":0,\r\n\t      \"7\":0,\r\n\t      \"8\":0\r\n      }\r\n   }\r\n]"
+				},
+				"url": {
+					"raw": "http://192.168.178.53:8081/set_from_json",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"178",
+						"53"
+					],
+					"port": "8081",
+					"path": [
+						"set_from_json"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
