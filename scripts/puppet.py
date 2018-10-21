@@ -2,12 +2,19 @@ from lib.udmx import uDMX
 import time
 from time import sleep
 import random
-
+from lib.soundmanager import SoundManager
+import os
 
 def play(**kwargs):
     dmx = kwargs.get("dmx")
 
-    t_end = time.time() + 10
+    sm = SoundManager()
+    sm.playFX("fx1")
+    sm.playFX("fx2")
+
+    #os.system('omxplayer -r videos/jump_scare_1.mp4')
+    #os.system('pkill omxplayer')
+    t_end = time.time() + 3
     while time.time() < t_end:
 
         R = random.randint(0, 255)
@@ -31,4 +38,4 @@ def play(**kwargs):
 
         dmx.update()
 
-        #sleep(0.1)
+        sleep(0.3)

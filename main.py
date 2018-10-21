@@ -16,14 +16,14 @@ if __name__ == '__main__':
     cherrypy.tree.graft(app, "/")
 
     # Add static file serving to enable swagger GUI
-    #PATH = os.path.abspath(os.path.dirname(__file__))
-    #cherrypy.tree.mount(Swagger(), '/docs', config={
-    #    '/': {
-    #        'tools.staticdir.on': True,
-    #        'tools.staticdir.dir': PATH + '/docs',
-    #        'tools.staticdir.index': 'index.html',
-    #    }
-    #})
+    PATH = os.path.abspath(os.path.dirname(__file__))
+    cherrypy.tree.mount(Swagger(), '/html', config={
+        '/': {
+            'tools.staticdir.on': True,
+            'tools.staticdir.dir': PATH + '/html',
+            'tools.staticdir.index': 'index.html',
+        }
+    })
 
     # Unsubscribe the default server
     cherrypy.server.unsubscribe()

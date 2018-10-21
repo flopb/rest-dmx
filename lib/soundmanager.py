@@ -4,7 +4,7 @@ from time import sleep
 
 class SoundManager():
     def __init__(self):
-        self.path = 'assets/sounds/'
+        self.path = 'sounds/'
         pygame.init()
         pygame.mixer.init()
         self.effects = {}
@@ -22,7 +22,7 @@ class SoundManager():
     def playFX(self, FX_name: str, loops=1, maxtime=0, fade_ms=0):
         effect = self.effects.get(FX_name)
         if effect is None:
-            self.effects[FX_name] = pygame.mixer.Sound('assets/sounds/' + str(FX_name) + '.wav')
+            self.effects[FX_name] = pygame.mixer.Sound('sounds/' + str(FX_name) + '.wav')
 
         self.effects[FX_name].play(loops=loops, maxtime=maxtime, fade_ms=fade_ms)
 
