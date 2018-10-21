@@ -1,4 +1,5 @@
 import usb  # This is pyusb
+import copy
 
 
 class uDMX():
@@ -21,8 +22,18 @@ class uDMX():
         self.initFixtures()
 
     def initFixtures(self):
-        self.addFixture("rgb1", 1, 8, {"1": 0, "2": 0, "3": 0, "4": 255, "5": 255, "6": 255, "7": 255, "8": 255})
-        self.addFixture("rgb2", 9, 16, {"1": 0, "2": 0, "3": 0, "4": 255, "5": 255, "6": 255, "7": 255, "8": 255})
+        self.addFixture("fog", 1, 1, {"1": 0})
+        self.addFixture("uv", 2, 8, {"1": 255, "2": 255, "3": 255, "4": 255, "5": 0, "6": 0, "7": 0})
+        self.addFixture("rgb1", 9, 16, {"1": 0, "2": 0, "3": 0, "4": 255, "5": 255, "6": 255, "7": 255, "8": 255})
+        self.addFixture("rgb2", 17, 24, {"1": 0, "2": 0, "3": 0, "4": 255, "5": 255, "6": 255, "7": 255, "8": 255})
+        self.addFixture("rgb3", 25, 32, {"1": 0, "2": 0, "3": 0, "4": 255, "5": 255, "6": 255, "7": 255, "8": 255})
+        self.addFixture("rgb4", 33, 40, {"1": 0, "2": 0, "3": 0, "4": 255, "5": 255, "6": 255, "7": 255, "8": 255})
+        self.addFixture("rgb5", 41, 48, {"1": 0, "2": 0, "3": 0, "4": 255, "5": 255, "6": 255, "7": 255, "8": 255})
+        self.addFixture("rgb6", 49, 56, {"1": 0, "2": 0, "3": 0, "4": 255, "5": 255, "6": 255, "7": 255, "8": 255})
+        self.addFixture("rgb7", 57, 64, {"1": 0, "2": 0, "3": 0, "4": 255, "5": 255, "6": 255, "7": 255, "8": 255})
+        self.addFixture("rgb8", 64, 71, {"1": 0, "2": 0, "3": 0, "4": 255, "5": 255, "6": 255, "7": 255, "8": 255})
+
+
 
     def resetFixtures(self):
         self.initFixtures()
@@ -40,9 +51,34 @@ class uDMX():
         self.fixtures[name]["end_channel"] = ch_end
         self.update()
 
+    def get_all_fixtures(self):
+        all_fixtures = []
+        for fixture in self.fixtures:
+            all_fixtures.append(fixture)
+
+        return all_fixtures
+
+    def get_snapshot(self):
+        all_fixtures = {}
+        for fixture in self.fixtures:
+            all_fixtures[fixture] = copy.deepcopy(self.fixtures[fixture]["channels"])
+
+        return all_fixtures
+
+    def restore_snapshot(self, snapshot):
+        for fixture in snapshot:
+            self.setFixtureValues(fixture, snapshot[fixture])
+        self.update()
+
     def setFixtureValues(self, fixture, values):
         for value in values:
             self.fixtures[fixture]["channels"][int(value)] = values[value]
+
+    def set_all_rgb(self, values):
+        fixtures = self.get_all_fixtures()
+        for fixture in fixtures:
+            if fixture[:3] == "rgb":
+                self.setFixtureValues(fixture, values)
 
     def update(self, fixtures = []):
         for fixture in self.fixtures:

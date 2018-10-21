@@ -39,3 +39,12 @@ def play(**kwargs):
         dmx.update()
 
         sleep(0.3)
+
+    values = {"1": 12, "2": 40, "3": 0, "4": 255, "5": 255, "6": 0, "7": 0, "8": 0}
+    fixture = "rgb1"
+    dmx.setFixtureValues(fixture, values)
+    values = {"1": 12, "2": 60, "3": 0, "4": 255, "5": 0, "6": 0, "7": 255, "8": 0}
+    fixture = "rgb2"
+    dmx.setFixtureValues(fixture, values)
+
+    dmx.update()

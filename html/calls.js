@@ -27,7 +27,7 @@ function set_from_json() {
         }
     });
 
-    xhr.open("POST", "http://192.168.178.53:8081/set_from_json");
+    xhr.open("POST", "/set_from_json");
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader("Cache-Control", "no-cache");
 
@@ -47,7 +47,7 @@ function call_script()
       }
     });
 
-    xhr.open("GET", "http://192.168.178.53:8081/playscript?script=puppet");
+    xhr.open("GET", "/playscript?script=puppet");
     xhr.setRequestHeader("Cache-Control", "no-cache");
 
     xhr.send(data);
@@ -59,7 +59,7 @@ function all_off()
     var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://192.168.178.53:8081/set_from_json",
+    "url": "/set_from_json",
     "method": "POST",
     "headers": {
     "Content-Type": "application/json",
@@ -80,7 +80,7 @@ function puppe()
     var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://192.168.178.53:8081/set_from_json",
+    "url": "/set_from_json",
     "method": "POST",
     "headers": {
     "Content-Type": "application/json",
@@ -93,5 +93,155 @@ function puppe()
 
     $.ajax(settings).done(function (response) {
     console.log(response);
+    });
+}
+
+function fogOn() {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "/set_from_json",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "cache-control": "no-cache"
+      },
+      "processData": false,
+      "data": "[\r\n   {\r\n      \"fixtures\":[\r\n         \"fog\"\r\n      ],\r\n      \"channels\": {\r\n\t      \"1\":255\r\n      }\r\n   }\r\n]"
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+}
+
+function fogOff() {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "/set_from_json",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "cache-control": "no-cache"
+      },
+      "processData": false,
+      "data": "[\r\n   {\r\n      \"fixtures\":[\r\n         \"fog\"\r\n      ],\r\n      \"channels\": {\r\n\t      \"1\":0\r\n      }\r\n   }\r\n]"
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+}
+
+function uv(brightness=255) {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "/set_from_json",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "cache-control": "no-cache",
+        "Postman-Token": "15528781-e01b-473b-94ce-68cbf074f240"
+      },
+      "processData": false,
+      "data": "[\r\n   {\r\n      \"fixtures\":[\r\n         \"uv\"\r\n      ],\r\n      \"channels\": {\r\n\t      \"1\":" + brightness + ",\r\n\t      \"2\":255,\r\n\t      \"3\":255,\r\n\t      \"4\":255,\r\n\t      \"5\":0,\r\n\t      \"6\":0,\r\n\t      \"7\":0\r\n      }\r\n   }\r\n]"
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+}
+
+function allLights(value=255) {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "/set_from_json",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "cache-control": "no-cache"
+      },
+      "processData": false,
+      "data": "[\r\n   {\r\n      \"fixtures\":[\r\n      \t \"rgb1\",\r\n      \t \"rgb2\",\r\n      \t \"rgb3\",\r\n         \"rgb4\",\r\n         \"rgb5\",\r\n         \"rgb6\",\r\n         \"rgb7\",\r\n         \"rgb8\"\r\n      ],\r\n      \"channels\": {\r\n\t      \"1\":0,\r\n\t      \"2\":0,\r\n\t      \"3\":0,\r\n\t      \"4\":"+value+",\r\n\t      \"5\":"+value+",\r\n\t      \"6\":"+value+",\r\n\t      \"7\":"+value+",\r\n\t      \"8\":"+value+"\r\n      }\r\n   }\r\n]"
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+}
+
+function thunder() {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "/playscript?script=lightning",
+      "method": "GET",
+      "headers": {
+        "cache-control": "no-cache"
+      }
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+}
+
+function red() {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "/set_from_json",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "cache-control": "no-cache"
+      },
+      "processData": false,
+      "data": "[\r\n   {\r\n      \"fixtures\":[\r\n      \t \"rgb1\",\r\n      \t \"rgb2\",\r\n      \t \"rgb3\",\r\n         \"rgb4\",\r\n         \"rgb5\",\r\n         \"rgb6\",\r\n         \"rgb7\",\r\n         \"rgb8\"\r\n      ],\r\n      \"channels\": {\r\n\t      \"1\":0,\r\n\t      \"2\":0,\r\n\t      \"3\":0,\r\n\t      \"4\":255,\r\n\t      \"5\":255,\r\n\t      \"6\":0,\r\n\t      \"7\":0,\r\n\t      \"8\":0\r\n      }\r\n   }\r\n]"
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+}
+
+function green() {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "/set_from_json",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "cache-control": "no-cache"
+      },
+      "processData": false,
+      "data": "[\r\n   {\r\n      \"fixtures\":[\r\n      \t \"rgb1\",\r\n      \t \"rgb2\",\r\n      \t \"rgb3\",\r\n         \"rgb4\",\r\n         \"rgb5\",\r\n         \"rgb6\",\r\n         \"rgb7\",\r\n         \"rgb8\"\r\n      ],\r\n      \"channels\": {\r\n\t      \"1\":0,\r\n\t      \"2\":0,\r\n\t      \"3\":0,\r\n\t      \"4\":255,\r\n\t      \"5\":0,\r\n\t      \"6\":255,\r\n\t      \"7\":0,\r\n\t      \"8\":0\r\n      }\r\n   }\r\n]"
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+}
+
+function blue() {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "/set_from_json",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "cache-control": "no-cache"
+      },
+      "processData": false,
+      "data": "[\r\n   {\r\n      \"fixtures\":[\r\n      \t \"rgb1\",\r\n      \t \"rgb2\",\r\n      \t \"rgb3\",\r\n         \"rgb4\",\r\n         \"rgb5\",\r\n         \"rgb6\",\r\n         \"rgb7\",\r\n         \"rgb8\"\r\n      ],\r\n      \"channels\": {\r\n\t      \"1\":0,\r\n\t      \"2\":0,\r\n\t      \"3\":0,\r\n\t      \"4\":255,\r\n\t      \"5\":0,\r\n\t      \"6\":0,\r\n\t      \"7\":255,\r\n\t      \"8\":0\r\n      }\r\n   }\r\n]"
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
     });
 }

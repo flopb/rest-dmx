@@ -25,9 +25,13 @@ def playscript():
     scriptname = request.args.get("script")
 
     script = importlib.import_module("scripts." + scriptname)
-    script.play(dmx = dmx)
+    script.play(dmx = dmx, args = request.args)
 
     return jsonify(dmx.fixtures)
+
+@app.route('/health')
+def health():
+    return "foobar"
 
 if __name__ == '__main__':
     app.run(host='192.168.178.53',port=5010)
