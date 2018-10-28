@@ -17,10 +17,10 @@ def play(**kwargs):
 
     snapshot = dmx.get_snapshot()
 
-    t_end = time.time() + 2
+    t_end = time.time() + 1.5
     while time.time() < t_end:
-        brightness = random.randint(120, 255)
-        values = {"1": 0, "2": 0, "3": 0, "4": brightness, "5": brightness, "6": 255, "7": brightness, "8": brightness}
+        brightness = random.randint(0, 255)
+        values = {"1": 0, "2": 0, "3": 0, "4": brightness, "5": brightness, "6": brightness, "7": 255, "8": brightness}
         dmx.set_all_rgb(values)
         dmx.update()
         # Time the flash

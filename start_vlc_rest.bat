@@ -1,0 +1,1 @@
+"C:\Program Files\VideoLAN\VLC\vlc.exe" --http-host=192.168.178.29 --http-port=9090 --http-password=foobar

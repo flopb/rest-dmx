@@ -8,9 +8,9 @@ import os
 def play(**kwargs):
     dmx = kwargs.get("dmx")
 
-    sm = SoundManager()
-    sm.playFX("fx1")
-    sm.playFX("fx2")
+    #sm = SoundManager()
+    #sm.playFX("fx1")
+    #sm.playFX("fx2")
 
     #os.system('omxplayer -r videos/jump_scare_1.mp4')
     #os.system('pkill omxplayer')

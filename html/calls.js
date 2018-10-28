@@ -245,3 +245,113 @@ function blue() {
       console.log(response);
     });
 }
+
+function video() {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "/playscript?script=video",
+      "method": "GET",
+      "headers": {
+        "cache-control": "no-cache"
+      }
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+}
+
+function hue_normal() {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "http://192.168.178.46/api/xtndDDnn4UblMG-JH1uu6ka8HiouI9Wa66liRYly/groups/0/action",
+      "method": "PUT",
+      "headers": {
+      },
+      "processData": false,
+      "data": "{\"on\":true, \"sat\":254, \"bri\":254,\"xy\":[0.5006,0.3993]}"
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+}
+
+function hue_red() {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "http://192.168.178.46/api/xtndDDnn4UblMG-JH1uu6ka8HiouI9Wa66liRYly/groups/0/action",
+      "method": "PUT",
+      "headers": {
+      },
+      "processData": false,
+      "data": "{\"on\":true, \"sat\":254, \"bri\":254,\"xy\":[0.7006,0.2993]}"
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+}
+
+function black_widow_entrance() {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "http://192.168.178.46/api/xtndDDnn4UblMG-JH1uu6ka8HiouI9Wa66liRYly/lights/14/state",
+      "method": "PUT",
+      "headers": {
+      },
+      "processData": false,
+      "data": "{\"on\":true, \"xy\":[0.7006,0.2593]}"
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+}
+
+function hue_entry_bulb_off() {
+    var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://192.168.178.46/api/xtndDDnn4UblMG-JH1uu6ka8HiouI9Wa66liRYly/lights/14/state",
+    "method": "PUT",
+    "headers": {},
+    "processData": false,
+    "data": "{\"on\":false}"
+    }
+
+    $.ajax(settings).done(function (response) {
+    console.log(response);
+    });
+}
+
+function doorbell() {
+    button = document.getElementById("bell_button")
+    button.disabled="disabled"
+    button.style.backgroundImage='linear-gradient(to bottom,#000000 0,#ff0000 290%)';
+    button.innerHTML = "Ihr habt den Dunklen und seine schwarze Witwe gerufen!<br>Macht euch bereit für das Grauen!"
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "/doorbell",
+      "method": "GET",
+      "headers": {
+        "cache-control": "no-cache"
+      }
+    }
+
+    $.ajax(settings).done(function (response) {
+        setTimeout(function(){
+                button = document.getElementById("bell_button")
+                button.disabled=""
+                button.style.backgroundImage='linear-gradient(to bottom,#337ab7 0,#265a88 100%)';
+                button.innerHTML = "Hier Klingeln<br>(touch me!)"
+
+        }, 60000)
+    });
+}
+
