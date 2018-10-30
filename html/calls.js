@@ -75,24 +75,19 @@ function all_off()
     });
 }
 
-function puppe()
+function puppet()
 {
     var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "/set_from_json",
-    "method": "POST",
-    "headers": {
-    "Content-Type": "application/json",
-    "Cache-Control": "no-cache",
-    "Postman-Token": "fdf88243-2628-4e07-8f81-f65a7b046d66"
-    },
-    "processData": false,
-    "data": "[\r\n   {\r\n      \"fixtures\":[\r\n         \"rgb1\",\r\n         \"rgb2\"\r\n      ],\r\n      \"channels\": {\r\n\t      \"1\":250,\r\n\t      \"2\":40,\r\n\t      \"3\":180,\r\n\t      \"4\":0,\r\n\t      \"5\":0,\r\n\t      \"6\":0,\r\n\t      \"7\":0,\r\n\t      \"8\":0\r\n      }\r\n   }\r\n]"
+      "async": true,
+      "crossDomain": true,
+      "url": "http://192.168.178.53:8081/playscript?script=puppet",
+      "method": "GET",
+      "headers": {
+      }
     }
 
     $.ajax(settings).done(function (response) {
-    console.log(response);
+      console.log(response);
     });
 }
 
@@ -396,3 +391,108 @@ function dim_up() {
             setTimeout( dim_up, 80 );
         }
     }
+
+function resetAll() {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "http://192.168.178.53:8081",
+      "method": "GET",
+      "headers": {
+        "cache-control": "no-cache",
+        "Postman-Token": "3ee6e32e-657c-4071-ae42-2dcddedf59b5"
+      }
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+}
+
+color_changer_speed = 100
+function colorChangerPlus()
+{
+    color_changer_speed = color_changer_speed + 5
+    if(color_changer_speed > 255) {
+        color_changer_speed = 255
+    }
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "http://192.168.178.53:8081/set_from_json",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "cache-control": "no-cache",
+        "Postman-Token": "325c2fc3-9c46-4bf7-8c2e-ab519e21713b"
+      },
+      "processData": false,
+      "data": "[\r\n   {\r\n      \"fixtures\":[\r\n         \"rgb2\",\r\n         \"rgb3\"\r\n      ],\r\n      \"channels\": {\r\n\t      \"1\":51,\r\n\t      \"2\":0,\r\n\t      \"3\":"+color_changer_speed+",\r\n\t      \"4\":255,\r\n\t      \"5\":255,\r\n\t      \"6\":0,\r\n\t      \"7\":0,\r\n\t      \"8\":0\r\n      }\r\n   }\r\n]"
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+}
+
+function colorChangerMinus()
+{
+    color_changer_speed = color_changer_speed - 5
+    if(color_changer_speed < 0) {
+        color_changer_speed = 0
+    }
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "http://192.168.178.53:8081/set_from_json",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "cache-control": "no-cache",
+        "Postman-Token": "325c2fc3-9c46-4bf7-8c2e-ab519e21713b"
+      },
+      "processData": false,
+      "data": "[\r\n   {\r\n      \"fixtures\":[\r\n         \"rgb2\",\r\n         \"rgb3\"\r\n      ],\r\n      \"channels\": {\r\n\t      \"1\":51,\r\n\t      \"2\":0,\r\n\t      \"3\":"+color_changer_speed+",\r\n\t      \"4\":255,\r\n\t      \"5\":255,\r\n\t      \"6\":0,\r\n\t      \"7\":0,\r\n\t      \"8\":0\r\n      }\r\n   }\r\n]"
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+}
+
+function strobe_graveyard_red_blue() {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "http://192.168.178.53:8081/playscript?script=strobe_graveyard",
+      "method": "GET",
+      "headers": {
+        "cache-control": "no-cache",
+        "Postman-Token": "c0d363b3-54d7-4492-bcbc-701637690032"
+      }
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+}
+
+function puppet_off() {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "http://192.168.178.53:8081/set_from_json",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "cache-control": "no-cache",
+        "Postman-Token": "3959c178-0d85-4d06-bc61-ac448f3690d1"
+      },
+      "processData": false,
+      "data": "[\r\n   {\r\n      \"fixtures\":[\r\n         \"uv\",\r\n         \"rgb4\"\r\n      ],\r\n      \"channels\": {\r\n\t      \"1\":0,\r\n\t      \"2\":0,\r\n\t      \"3\":0,\r\n\t      \"4\":0,\r\n\t      \"5\":0,\r\n\t      \"6\":0,\r\n\t      \"7\":0,\r\n\t      \"8\":0\r\n      }\r\n   }\r\n]"
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+}
