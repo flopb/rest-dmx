@@ -3,3 +3,19 @@ button.btn_xxl {
     height: 15rem;
     font-size: 180%;
 }
+
+button.red {
+    background-image: linear-gradient(to bottom,#ff0000 0,#ee0000 100%)
+}
+
+button.green {
+    background-image: linear-gradient(to bottom, #006400 0,#004600 100%)
+}
+
+button.yellow {
+    background-image: linear-gradient(to bottom, #dae73a 0,#cad72a 100%)
+}
+
+button.grey {
+    background-image: linear-gradient(to bottom, #cccccc 0,#aaaaaa 100%)
+}

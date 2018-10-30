@@ -5,17 +5,25 @@
     <title>DMX-Control-Dashboard</title>
 </head>
 <body>
-<button class="btn-lg btn-primary btn_xxl" onclick="video()">Video</button>
+<button class="btn-lg btn-primary btn_xxl grey" onclick="resetAll()">Defaults</button>
+<button class="btn-lg btn-primary btn_xxl green" onclick="puppet()">Puppe</button>
+<button class="btn-lg btn-primary btn_xxl green" onclick="puppet_off()">Puppe aus</button>
+<button class="btn-lg btn-primary btn_xxl green" onclick="video()">Video</button>
+<button class="btn-lg btn-primary btn_xxl green" onclick="colorChangerPlus()">Color Change +</button>
+<button class="btn-lg btn-primary btn_xxl green" onclick="colorChangerMinus()">Color Change -</button>
+<button class="btn-lg btn-primary btn_xxl green" onclick="strobe_graveyard_red_blue()">Graveyard Strobe R/B</button>
+<button class="btn-lg btn-primary btn_xxl red" onclick="fogOn()">Fog On</button>
+<button class="btn-lg btn-primary btn_xxl red" onclick="fogOff()">Fog Off</button>
+<button class="btn-lg btn-primary btn_xxl green" onclick="thunder(0)">Blitzlicht</button>
 <button class="btn-lg btn-primary btn_xxl" onclick="call_script()">Flickering</button>
-<button class="btn-lg btn-primary btn_xxl" onclick="all_off()">Alles aus</button>
-<button class="btn-lg btn-primary btn_xxl" onclick="puppe()">Puppe</button>
-<button class="btn-lg btn-primary btn_xxl" onclick="fogOn()">Fog On</button>
-<button class="btn-lg btn-primary btn_xxl" onclick="fogOff()">Fog Off</button>
+<button class="btn-lg btn-primary btn_xxl red" onclick="all_off()">Alles aus</button>
+
+
 <button class="btn-lg btn-primary btn_xxl" onclick="uv(255)">UV On</button>
 <button class="btn-lg btn-primary btn_xxl" onclick="uv(0)">UV Off</button>
 <button class="btn-lg btn-primary btn_xxl" onclick="allLights(255)">Licht an!</button>
 <button class="btn-lg btn-primary btn_xxl" onclick="allLights(0)">Licht aus!</button>
-<button class="btn-lg btn-primary btn_xxl" onclick="thunder(0)">Blitzlicht</button>
+
 <button class="btn-lg btn-primary btn_xxl" onclick="red(0)">Rot</button>
 <button class="btn-lg btn-primary btn_xxl" onclick="green(0)">Grün</button>
 <button class="btn-lg btn-primary btn_xxl" onclick="blue(0)">Blau</button>
@@ -40,6 +48,6 @@
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
 <script src="calls.js"></script>
-<link rel="stylesheet" href="site.css?5">
+<link rel="stylesheet" href="site.css?6">
 </body>
 </html>
