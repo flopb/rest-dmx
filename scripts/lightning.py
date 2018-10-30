@@ -20,7 +20,7 @@ def play(**kwargs):
     t_end = time.time() + 1.5
     while time.time() < t_end:
         brightness = random.randint(0, 255)
-        values = {"1": 0, "2": 0, "3": 0, "4": brightness, "5": brightness, "6": brightness, "7": 255, "8": brightness}
+        values = {"1": 0, "2": 0, "3": 0, "4": 255, "5": 0, "6": 0, "7": 255, "8": brightness}
         dmx.set_all_rgb(values)
         dmx.update()
         # Time the flash
@@ -28,7 +28,7 @@ def play(**kwargs):
         sleep(sleeptime)
 
         brightness = 0
-        values = {"1": 0, "2": 0, "3": 0, "4": brightness, "5": brightness, "6": brightness, "7": brightness,
+        values = {"1": 0, "2": 0, "3": 0, "4": 255, "5": 0, "6": brightness, "7": brightness,
                   "8": brightness}
         dmx.set_all_rgb(values)
         dmx.update()

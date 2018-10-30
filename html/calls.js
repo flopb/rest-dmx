@@ -329,7 +329,7 @@ function hue_entry_bulb_off() {
     });
 }
 
-function doorbell() {
+function doorbell_button() {
     button = document.getElementById("bell_button")
     button.disabled="disabled"
     button.style.backgroundImage='linear-gradient(to bottom,#000000 0,#ff0000 290%)';
@@ -354,4 +354,45 @@ function doorbell() {
         }, 60000)
     });
 }
+var hue_counter = 0, howManyTimes = 255;
+function doorbell() {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "/doorbell",
+      "method": "GET",
+      "headers": {
+        "cache-control": "no-cache"
+      }
+    }
+    $.ajax(settings).done(function (response) {
 
+    });
+
+    hue_counter = 0
+    dim_up()
+
+
+}
+
+function dim_up() {
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://192.168.178.46/api/xtndDDnn4UblMG-JH1uu6ka8HiouI9Wa66liRYly/lights/14/state",
+            "method": "PUT",
+            "headers": {},
+            "processData": false,
+            "data": "{\"on\":true, \"bri\":"+(hue_counter*5)+"}"
+        }
+
+        $.ajax(settings).done(function (response) {
+
+        });
+
+        hue_counter++;
+        console.log(hue_counter)
+        if( hue_counter < howManyTimes ){
+            setTimeout( dim_up, 80 );
+        }
+    }

@@ -76,6 +76,10 @@ def doorbell():
     response = requests.request("GET", url, headers=headers, params=querystring)
     ############################################
 
+    time.sleep(11.5)
+    script = importlib.import_module("scripts.door")
+    script.play(dmx=dmx, args=request.args)
+
     return "Ok"
 
 @app.route('/start_music', methods=["GET"])
