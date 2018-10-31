@@ -9,7 +9,7 @@ def coach():
     headers = {}
 
     response = requests.request("PUT", url, data=payload, headers=headers)
-
+    sleep(3)
     brightness = 255
     while True:
         import requests

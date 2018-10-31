@@ -257,6 +257,22 @@ function video() {
     });
 }
 
+function video2() {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "/playscript?script=video2",
+      "method": "GET",
+      "headers": {
+        "cache-control": "no-cache"
+      }
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+}
+
 function hue_normal() {
     var settings = {
       "async": true,
@@ -490,6 +506,21 @@ function puppet_off() {
       },
       "processData": false,
       "data": "[\r\n   {\r\n      \"fixtures\":[\r\n         \"uv\",\r\n         \"rgb4\"\r\n      ],\r\n      \"channels\": {\r\n\t      \"1\":0,\r\n\t      \"2\":0,\r\n\t      \"3\":0,\r\n\t      \"4\":0,\r\n\t      \"5\":0,\r\n\t      \"6\":0,\r\n\t      \"7\":0,\r\n\t      \"8\":0\r\n      }\r\n   }\r\n]"
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+}
+
+function playpause() {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "http://192.168.178.28:9090/requests/status.xml?command=pl_pause",
+      "method": "GET",
+      "headers": {
+      }
     }
 
     $.ajax(settings).done(function (response) {
