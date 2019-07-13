@@ -26,9 +26,10 @@ def set_from_json():
 @app.route('/playscript', methods=["GET"])
 def playscript():
     scriptname = request.args.get("script")
-    print("foobar")
+    pos = request.args.get("pos")
+    duration = request.args.get("duration")
     script = importlib.import_module("scripts." + scriptname)
-    script.play(dmx = dmx, args = request.args)
+    script.play(dmx = dmx, args = request.args, pos=pos, duration=duration)
 
     return jsonify(dmx.fixtures)
 
@@ -97,4 +98,4 @@ def health():
     return "foobar"
 
 if __name__ == '__main__':
-    app.run(host='192.168.178.53',port=5010)
+    app.run(host='localhost',port=8081, debug=True)

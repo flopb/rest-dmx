@@ -31,7 +31,6 @@ class uDMX():
         self.addFixture("rgb4", 9, 16, {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0})
         self.addFixture("rgb5", 33, 40, {"1": 0, "2": 0, "3": 0, "4": 255, "5": 0, "6": 255, "7": 0, "8": 0})
         self.addFixture("rgb6", 25, 32, {"1": 0, "2": 0, "3": 0, "4": 255, "5": 255, "6": 0, "7": 0, "8": 0})
-
         self.addFixture("rgb8", 41, 48, {"1": 0, "2": 0, "3": 0, "4": 255, "5": 255, "6": 255, "7": 255, "8": 255})
         self.addFixture("rgb7", 57, 64, {"1": 0, "2": 0, "3": 0, "4": 255, "5": 255, "6": 255, "7": 255, "8": 255})
 
@@ -73,6 +72,9 @@ class uDMX():
     def setFixtureValues(self, fixture, values):
         for value in values:
             self.fixtures[fixture]["channels"][int(value)] = values[value]
+
+    def getFixtureValues(self, fixture):
+        return self.fixtures[fixture]["channels"]
 
     def set_all_rgb(self, values):
         fixtures = self.get_all_fixtures()
