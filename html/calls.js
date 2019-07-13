@@ -460,11 +460,11 @@ function colorChangerMinus()
     });
 }
 
-function strobe_graveyard_red_blue() {
+function play_script(scriptname) {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "http://192.168.178.53:8081/playscript?script=strobe_graveyard",
+      "url": "http://192.168.178.53:8081/playscript?script=" + scriptname,
       "method": "GET",
       "headers": {
         "cache-control": "no-cache",

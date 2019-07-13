@@ -26,7 +26,7 @@ def set_from_json():
 @app.route('/playscript', methods=["GET"])
 def playscript():
     scriptname = request.args.get("script")
-
+    print("foobar")
     script = importlib.import_module("scripts." + scriptname)
     script.play(dmx = dmx, args = request.args)
 
