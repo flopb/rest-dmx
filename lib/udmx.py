@@ -1,7 +1,6 @@
 import usb  # This is pyusb
 import copy
 
-
 class uDMX():
     SingleChannelModeFlag = 1
     MultiChannelModeFlag = 2

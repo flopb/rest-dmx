@@ -1,6 +1,6 @@
 from time import sleep
 from pygame import mixer  # Load the required library
-from lib import fx
+from lib import effects
 import functools
 f = functools.partial
 
@@ -27,12 +27,12 @@ def play(**kwargs):
 
     script = {}
     script[7950] = [
-        f(fx.fade_in, dmx, fixtures=["rgb1"], values=values, speed=15, limit=255),
-        f(fx.fade_out, dmx, fixtures=["rgb1"], values=values, speed=15, limit=0)
+        f(effects.fade_in, dmx, fixtures=["rgb1"], values=values, speed=15, limit=255),
+        f(effects.fade_out, dmx, fixtures=["rgb1"], values=values, speed=15, limit=0)
     ]
     script[10500] = [
-        f(fx.fade_in, dmx, fixtures=["rgb1"], values=values, speed=15, limit=255),
-        f(fx.fade_out, dmx, fixtures=["rgb1"], values=values, speed=15, limit=0)
+        f(effects.fade_in, dmx, fixtures=["rgb1"], values=values, speed=15, limit=255),
+        f(effects.fade_out, dmx, fixtures=["rgb1"], values=values, speed=15, limit=0)
     ]
     script[12500] = [
         f(dmx.set_all_rgb, values={"1": 0, "2": 0, "3": 0, "4": 255, "5": 255, "6": 0, "7": 255, "8": 0}),
