@@ -1,8 +1,8 @@
 import sys
 from time import sleep
-from lib.udmx import uDMX
-from lib.soundmanager import SoundManager
-from lib.ultrasonic import UltraSonic
+from mylib.udmx import uDMX
+from mylib.soundmanager import SoundManager
+from mylib.ultrasonic import UltraSonic
 import threading
 
 

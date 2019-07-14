@@ -75,12 +75,6 @@ class uDMX():
     def getFixtureValues(self, fixture):
         return self.fixtures[fixture]["channels"]
 
-    def set_all_rgb(self, values):
-        fixtures = self.get_all_fixtures()
-        for fixture in fixtures:
-            if fixture[:3] == "rgb":
-                self.setFixtureValues(fixture, values)
-
     def update(self, fixtures = []):
         for fixture in self.fixtures:
             if len(fixtures) == 0 or fixture in fixtures:

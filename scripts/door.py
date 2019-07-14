@@ -1,8 +1,8 @@
-from lib.udmx import uDMX
+from mylib.udmx import uDMX
 import time
 from time import sleep
 import random
-from lib.soundmanager import SoundManager
+from mylib.soundmanager import SoundManager
 import os
 import requests
 

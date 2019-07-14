@@ -1,7 +1,7 @@
-from lib.udmx import uDMX
+from mylib.udmx import uDMX
 import os
 from subprocess import Popen
-from lib.soundmanager import SoundManager
+from mylib.soundmanager import SoundManager
 
 def play(**kwargs):
     dmx = kwargs.get("dmx")

@@ -1,9 +1,9 @@
 from flask import Flask, jsonify, request
-from lib.udmx import uDMX
+from mylib.udmx import uDMX
 import importlib
 app = Flask(__name__)
 dmx = uDMX()
-from lib.soundmanager import SoundManager
+from mylib.soundmanager import SoundManager
 import os, time
 import requests
 
@@ -26,7 +26,7 @@ def set_from_json():
 @app.route('/playscript', methods=["GET"])
 def playscript():
     scriptname = request.args.get("script")
-    pos = request.args.get("pos")
+    pos = request.args.get("pos", 0)
     duration = request.args.get("duration")
     script = importlib.import_module("scripts." + scriptname)
     script.play(dmx = dmx, args = request.args, pos=pos, duration=duration)
