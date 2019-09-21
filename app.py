@@ -1,10 +1,15 @@
 from flask import Flask, jsonify, request
 from mylib.udmx import uDMX
+from mylib.pwmdriver import Servo
 import importlib
 app = Flask(__name__)
-dmx = uDMX()
+try:
+    dmx = uDMX()
+except:
+    print("uDMX Device not found")
 from mylib.soundmanager import SoundManager
 import os, time
+from time import sleep
 import requests
 
 @app.route('/')
@@ -92,6 +97,19 @@ def start_music():
     #os.system(bashCommand)
 
     return "Ok"
+
+@app.route('/servo', methods=["POST"])
+def servo():
+    s = Servo()
+    s.speak("paule")
+    #json = request.get_json()
+    #settings = json.get("servos")
+    #for key, value in settings.items():
+    #    s.set(key, value)
+    #    sleep(1)
+
+    return jsonify("foo")
+
 
 @app.route('/health')
 def health():

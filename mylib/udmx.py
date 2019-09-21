@@ -23,15 +23,17 @@ class uDMX():
     def initFixtures(self):
 
         self.addFixture("fog", 1, 1, {"1": 0})
-        self.addFixture("uv", 2, 8, {"1": 0, "2": 255, "3": 255, "4": 255, "5": 0, "6": 0, "7": 0})
-        self.addFixture("rgb1", 49, 56, {"1": 0, "2": 0, "3": 0, "4": 255, "5": 255, "6": 0, "7": 0, "8": 0})
-        self.addFixture("rgb2", 17, 24, {"1": 0, "2": 0, "3": 0, "4": 255, "5": 0, "6": 255, "7": 0, "8": 0})
+        self.addFixture("uv", 2, 8, {"1": 255, "2": 255, "3": 255, "4": 255, "5": 0, "6": 0, "7": 0})
+        self.addFixture("rgb2", 49, 56, {"1": 0, "2": 0, "3": 0, "4": 255, "5": 255, "6": 0, "7": 0, "8": 0})
+        self.addFixture("rgb1", 17, 24, {"1": 0, "2": 0, "3": 0, "4": 255, "5": 0, "6": 255, "7": 0, "8": 0})
         self.addFixture("rgb3", 65, 72, {"1": 0, "2": 0, "3": 0, "4": 255, "5": 255, "6": 255, "7": 255, "8": 255})
-        self.addFixture("rgb4", 9, 16, {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0})
+        self.addFixture("rgb6", 9, 16, {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0})
         self.addFixture("rgb5", 33, 40, {"1": 0, "2": 0, "3": 0, "4": 255, "5": 0, "6": 255, "7": 0, "8": 0})
-        self.addFixture("rgb6", 25, 32, {"1": 0, "2": 0, "3": 0, "4": 255, "5": 255, "6": 0, "7": 0, "8": 0})
+        self.addFixture("rgb4", 25, 32, {"1": 0, "2": 0, "3": 0, "4": 255, "5": 255, "6": 0, "7": 0, "8": 0})
         self.addFixture("rgb8", 41, 48, {"1": 0, "2": 0, "3": 0, "4": 255, "5": 255, "6": 255, "7": 255, "8": 255})
         self.addFixture("rgb7", 57, 64, {"1": 0, "2": 0, "3": 0, "4": 255, "5": 255, "6": 255, "7": 255, "8": 255})
+        self.addFixture("gobo1", 73, 81, {"1": 175, "2": 255, "3": 0, "4": 16, "5": 10, "6": 255, "7": 125, "8": 0, "9":0})
+        self.addFixture("gobo2", 82, 90, {"1": 175, "2": 255, "3": 0, "4": 16, "5": 10, "6": 255, "7": 125, "8": 0, "9": 0})
 
     def resetFixtures(self):
         self.initFixtures()
@@ -49,10 +51,11 @@ class uDMX():
         self.fixtures[name]["end_channel"] = ch_end
         self.update()
 
-    def get_all_fixtures(self):
+    def get_all_fixtures(self, filter = "rgb"):
         all_fixtures = []
         for fixture in self.fixtures:
-            all_fixtures.append(fixture)
+            if filter in fixture:
+                all_fixtures.append(fixture)
 
         return all_fixtures
 

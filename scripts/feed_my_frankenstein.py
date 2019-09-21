@@ -1,17 +1,23 @@
 from mylib.helpers import runScript
 from time import sleep
 from mylib import effects
+from mylib.pwmdriver import Servo
 import functools
 
 f = functools.partial
 
 def play(**kwargs):
     dmx = kwargs.get("dmx")
+    servo = Servo()
+    servo.set("paule", "open")
     fx = effects.FX(dmx)
     script = {}
     startpos = float(kwargs.get("pos"))
     duration = float(kwargs.get("duration")) if kwargs.get("duration") is not None else None
-
+    fx.uv_off()
+    fx.mh_set_start("gobo", 175, 255)
+    fx.mh_set_gobo("gobo", "spot")
+    fx.mh_set_color("gobo", "darkblue")
     ## Create initial mood
     fx.blackout()
 
@@ -20,11 +26,21 @@ def play(**kwargs):
 
     ## Here comes the script
     script[0] = [f(fx.fog, intensity=255, duration=1.0)]  # manual
-    script[7975] = [f(fx.set_all_rgb, values=fx.red(), update=True)]  # space
-    script[8601] = [f(fx.set_all_rgb, values=fx.blue(), update=True)]  # space
-    script[10425] = [f(fx.set_all_rgb, values=fx.red(), update=True)]  # space
-    script[11371] = [f(fx.set_all_rgb, values=fx.blue(), update=True)]  # space
-    script[12177] = [f(fx.racer, color_brgbw=[255, 255, 255, 255, 255], splittime=0.05, laps=1, reverse=False)]  # 2
+    #script[6850] = [f(fx.uv_on)]
+    #script[7975] = [f(fx.set_all_rgb, values=fx.red(), update=True)]  # space
+    script[7890] = [f(fx.mh_move_to, fixture="gobo", rotation=175, tilt=110, speed=150)]  # space
+    #script[8601] = [f(fx.set_all_rgb, values=fx.blue(), update=True)]  # space
+    #script[8600] = [f(fx.mh_move_to, fixture="gobo", rotation=175, tilt=0, speed=0)]
+    #script[10425] = [f(fx.set_all_rgb, values=fx.red(), update=True)]  # space
+    script[10425] = [f(fx.mh_set_color, fixture="gobo", name="red")]
+    script[10426] = [f(fx.mh_move_to, fixture="gobo2", rotation=105, tilt=100, speed=200)]
+    script[10427] = [f(fx.mh_move_to, fixture="gobo1", rotation=245, tilt=100, speed=200)]
+    #script[11371] = [f(fx.set_all_rgb, values=fx.blue(), update=True)]  # space
+    script[12174] = [f(fx.mh_move_to, fixture="gobo2", rotation=0, tilt=60, speed=40)]
+    script[12175] = [f(fx.mh_move_to, fixture="gobo1", rotation=0, tilt=60, speed=40)]
+    script[12176] = [f(fx.mh_strobe, fixture="gobo", color="red", speed=100)]  # space
+    script[12177] = [f(fx.racer, color_brgbw=[255, 255, 255, 255, 255], splittime=0.02, laps=2, reverse=False)]  # 2
+    script[12890] = [f(fx.mh_off, fixture="gobo", update=True)]
     script[12891] = [f(fx.set_all_rgb, values=fx.red(), update=True)]  # space
     script[13404] = [f(fx.set_all_rgb, values=fx.green(), update=True)]  # space
     script[14001] = [f(fx.set_all_rgb, values=fx.blue(), update=True)]  # space
@@ -90,7 +106,9 @@ def play(**kwargs):
     script[55400] = [f(fx.racer, color_brgbw=[255, 255, 255, 255, 255], splittime=0.017, laps=12, reverse=False)]
     script[56445] = [f(fx.blackout)]  # 1
     script[56450] = [f(fx.set_all_rgb, values=fx.blue(), update=True)]  # space
-    script[56500] = [f(fx.fade_out, speed=15)]  # space
+    #script[56500] = [f(fx.fade_out, speed=15)]  # space
+    script[54500] = [f(fx.mh_set_start, fixture="gobo", rotation=175, tilt=255)]
+    script[56500] = [f(fx.mh_move_to, fixture="gobo", rotation=175, tilt=110, speed=10, autoOffAfter=0.5)]
     script[56550] = [f(fx.racer, color_brgbw=[255, 255, 255, 255, 255], splittime=0.017, laps=12, reverse=True)]
     #script[56439] = [f(fx.racer, color_brgbw=[255, 255, 0, 0, 0], splittime=0.01, laps=8, reverse=True)]
 

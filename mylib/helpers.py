@@ -1,4 +1,5 @@
 from pygame import mixer  # Load the required library
+import threading
 
 def runScript(file_name, startpos, script, duration):
     mixer.init()
@@ -19,7 +20,10 @@ def runScript(file_name, startpos, script, duration):
             if currenttime >= key and type(script[key]) == list:
                 print("Play Script:", key)
                 for func in script[key]:
-                    func()
+                    t1 = threading.Thread(target=func)
+                    t1.start()
+                    t1.setDaemon(True)
+                    #func()
                     script[key] = "done"
 
 def stop(dmx):

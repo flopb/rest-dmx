@@ -4,6 +4,7 @@
 # License: Public Domain
 from __future__ import division
 import time
+import random
 
 # Import the PCA9685 module.
 import Adafruit_PCA9685
@@ -41,14 +42,22 @@ pwm.set_pwm_freq(60)
 print('Moving servo on channel 0, press Ctrl-C to quit...')
 while True:
     # Move servo on channel O between extremes.
-    pwm.set_pwm(0, 0, servo_min)
-    pwm.set_pwm(1, 0, servo_max)
-    pwm.set_pwm(2, 0, int(servo_max/2))
-    time.sleep(1)
-    pwm.set_pwm(0, 0, servo_max)
-    pwm.set_pwm(1, 0, servo_min)
-    pwm.set_pwm(2, 0, int(servo_min/2))
-    time.sleep(1)
+    #pwm.set_pwm(0, 0, servo_min)
+    #pwm.set_pwm(1, 0, servo_max)
+    value = random.randint(350,450)
+    pwm.set_pwm(0, 0, value)
+    time.sleep(0.2)
+    #value = random.randint(280,320)
+    #pwm.set_pwm(0, 0, value)
+    #time.sleep(0.2)
+    #pwm.set_pwm(0, 0, servo_max)
+    #pwm.set_pwm(1, 0, servo_min)
+    #pwm.set_pwm(0, 0, int(250))
+    #time.sleep(0.8)
+    #pwm.set_pwm(0, 0, int(450))
+    #time.sleep(0.6)
+    #pwm.set_pwm(0, 0, int(380))
+    #time.sleep(0.8)
     #set_servo_pulse(0, servo_max)
     #set_servo_pulse(1, servo_min)
     #time.sleep(1)

@@ -7,6 +7,82 @@ class FX:
     def __init__(self, dmx):
         self.dmx = dmx
         self.strobe_colors = {"all": 1, "red": 40, "green": 50, "blue":60, "yellow": 70, "cyan":80, "purple": 90, "white": 100 }
+        self.mh_colors = {"white": 1, "red": 16, "lightblue": 32, "orange": 48, "darkblue": 64, "yellow": 80, "green": 96, "violet": 112}
+        self.mh_gobos = {"spiral": 0, "star": 8, "spot": 16, "flower": 24, "dotrings": 32, "mudball": 40, "puzzle": 48, "bubbles": 56}
+        self.mh_gobos_jitter = {"spiral": 64, "star": 72, "spot": 80, "flower": 88, "dotrings": 96, "mudball": 104, "puzzle": 112,
+                         "bubbles": 120}
+
+    def mh_move_to(self, fixture, rotation, tilt, speed, autoOn=True, update=True, autoOffAfter=False):
+        fixtures = self.dmx.get_all_fixtures(filter=fixture)
+        for fixture in fixtures:
+            values = {"1": rotation, "2": tilt, "7": speed}
+            if autoOn:
+                self.mh_on(fixture)
+            self.dmx.setFixtureValues(fixture, values)
+        if update:
+            self.dmx.update(fixtures=fixtures)
+
+        if autoOffAfter:
+            sleep(autoOffAfter)
+            for fixture in fixtures:
+                self.mh_off(fixture)
+
+    def mh_set_start(self, fixture, rotation, tilt, autoOff=True, update=True):
+        fixtures = self.dmx.get_all_fixtures(filter=fixture)
+        for fixture in fixtures:
+            if autoOff:
+                self.mh_off(fixture)
+            self.dmx.setFixtureValues(fixture, {"1": rotation, "2": tilt, "5": 0, "7": 50})
+        if update:
+            self.dmx.update(fixtures=fixtures)
+
+    def mh_set_gobo(self, fixture, name, update=True):
+        fixtures = self.dmx.get_all_fixtures(filter=fixture)
+        for fixture in fixtures:
+            self.dmx.setFixtureValues(fixture, {"4": self.mh_gobos.get(name, 80)})
+        if update:
+            self.dmx.update(fixtures=fixtures)
+
+    def mh_set_color(self,fixture, name, update=True):
+        fixtures = self.dmx.get_all_fixtures(filter=fixture)
+        for fixture in fixtures:
+            self.dmx.setFixtureValues(fixture, {"3": self.mh_colors.get(name, 1)})
+        if update:
+            self.dmx.update(fixtures=fixtures)
+
+    def mh_off(self, fixture, update=True):
+        fixtures = self.dmx.get_all_fixtures(filter=fixture)
+        for fixture in fixtures:
+            self.dmx.setFixtureValues(fixture, {"5": 1})
+        if update:
+            self.dmx.update(fixtures=fixtures)
+
+    def mh_on(self, fixture, update=True):
+        fixtures = self.dmx.get_all_fixtures(filter=fixture)
+        for fixture in fixtures:
+            self.dmx.setFixtureValues(fixture, {"5": 8})
+        if update:
+            self.dmx.update(fixtures=fixtures)
+
+    def mh_strobe(self, fixture, color, speed, update=True):
+        fixtures = self.dmx.get_all_fixtures(filter=fixture)
+        for fixture in fixtures:
+            self.mh_set_color(fixture, color, False)
+            speed += 16
+            if speed > 131:
+                speed = 131
+
+            self.dmx.setFixtureValues(fixture, {"5": speed})
+        if update:
+            self.dmx.update(fixtures=fixtures)
+
+    def uv_on(self):
+        self.dmx.setFixtureValues("uv", {"1": 255, "2": 255, "3": 255, "4": 255})
+        self.dmx.update(fixtures="uv")
+
+    def uv_off(self):
+        self.dmx.setFixtureValues("uv", {"1": 0, "2": 0, "3": 0, "4": 0})
+        self.dmx.update(fixtures="uv")
 
     def random(self, color_brgbw, fixtures=None, splittime=0.1, laps=1, reverse=False):
         if fixtures is None:
@@ -71,6 +147,7 @@ class FX:
         return True
 
     def fog(self, intensity=255, duration=0.2):
+        print("FOG ON FOR", duration)
         values = {"1": intensity, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0}
         self.dmx.setFixtureValues("fog", values)
         self.dmx.update()
@@ -78,6 +155,7 @@ class FX:
         values = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0}
         self.dmx.setFixtureValues("fog", values)
         self.dmx.update()
+        print("FOG OFF FOR", duration)
         return True
 
     def fade_in(self, color_brgbw, fixtures=None, speed=20, limit=255):
