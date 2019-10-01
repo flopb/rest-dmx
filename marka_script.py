@@ -1,81 +1,11 @@
-script[31748] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[32030] = [f(dmx.set_all_rgb, values=fx.green(), update=True, , autoOff=False)] #space
-script[32312] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[32761] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[33051] = [f(dmx.set_all_rgb, values=fx.green(), update=True, , autoOff=False)] #space
-script[33336] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[33545] = [f(dmx.set_all_rgb, values=fx.green(), update=True, , autoOff=False)] #space
-script[33857] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[34115] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[34396] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[34674] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[35081] = [f(dmx.set_all_rgb, values=fx.green(), update=True, , autoOff=False)] #space
-script[35401] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[35692] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[36000] = [f(dmx.set_all_rgb, values=fx.green(), update=True, , autoOff=False)] #space
-script[36135] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[36436] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[36741] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[37020] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[37505] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[37754] = [f(dmx.set_all_rgb, values=fx.green(), update=True, , autoOff=False)] #space
-script[38079] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[38415] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[38805] = [f(dmx.set_all_rgb, values=fx.green(), update=True, , autoOff=False)] #space
-script[39094] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[39389] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[39880] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[40142] = [f(dmx.set_all_rgb, values=fx.green(), update=True, , autoOff=False)] #space
-script[40450] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[40589] = [f(dmx.set_all_rgb, values=fx.green(), update=True, , autoOff=False)] #space
-script[40767] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[40892] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[41186] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[41486] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[41788] = [f(dmx.set_all_rgb, values=fx.green(), update=True, , autoOff=False)] #space
-script[42224] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[42567] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[42813] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[42965] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[43151] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[43294] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[43566] = [f(dmx.set_all_rgb, values=fx.green(), update=True, , autoOff=False)] #space
-script[43892] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[44145] = [f(dmx.set_all_rgb, values=fx.green(), update=True, , autoOff=False)] #space
-script[44614] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[44861] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[45194] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[45465] = [f(dmx.set_all_rgb, values=fx.green(), update=True, , autoOff=False)] #space
-script[45887] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[46198] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[46466] = [f(dmx.set_all_rgb, values=fx.green(), update=True, , autoOff=False)] #space
-script[46956] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[47245] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[47520] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[47637] = [f(dmx.set_all_rgb, values=fx.green(), update=True, , autoOff=False)] #space
-script[47815] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[47945] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[48239] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[48543] = [f(dmx.set_all_rgb, values=fx.green(), update=True, , autoOff=False)] #space
-script[48867] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[49405] = [f(dmx.set_all_rgb, values=fx.green(), update=True, , autoOff=False)] #space
-script[49629] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[49961] = [f(dmx.set_all_rgb, values=fx.green(), update=True, , autoOff=False)] #space
-script[50253] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[50644] = [f(dmx.set_all_rgb, values=fx.green(), update=True, , autoOff=False)] #space
-script[50959] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[51212] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[51692] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[51984] = [f(dmx.set_all_rgb, values=fx.green(), update=True, , autoOff=False)] #space
-script[52273] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[52411] = [f(dmx.set_all_rgb, values=fx.green(), update=True, , autoOff=False)] #space
-script[52560] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[52954] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[53230] = [f(dmx.set_all_rgb, values=fx.green(), update=True, , autoOff=False)] #space
-script[53546] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[54015] = [f(dmx.set_all_rgb, values=fx.green(), update=True, , autoOff=False)] #space
-script[54369] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
-script[54668] = [f(dmx.set_all_rgb, values=fx.green(), update=True, , autoOff=False)] #space
-script[54806] = [f(dmx.set_all_rgb, values=fx.red(), update=True, , autoOff=False)] #space
-script[54972] = [f(dmx.set_all_rgb, values=fx.green(), update=True, , autoOff=False)] #space
-script[55151] = [f(dmx.set_all_rgb, values=fx.blue(), update=True, , autoOff=False)] #space
+script[37222] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)] #n
+script[37321] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)] #c
+script[37532] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)] #n
+script[38160] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)] #n
+script[38354] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)] #c
+script[38502] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)] #n
+script[39018] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)] #n
+script[39238] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)] #n
+script[39388] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)] #c
+script[39889] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)] #n
+script[40201] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)] #c

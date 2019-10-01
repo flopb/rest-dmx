@@ -5,7 +5,7 @@ import Adafruit_PCA9685
 # Uncomment to enable debug output.
 import logging
 import random
-logging.basicConfig(level=logging.CRITICAL)
+logging.basicConfig(level=logging.DEBUG)
 
 class Servo:
     def __init__(self):

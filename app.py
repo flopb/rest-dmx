@@ -12,6 +12,12 @@ import os, time
 from time import sleep
 import requests
 
+import functools
+import multiprocessing
+
+f = functools.partial
+process = None
+
 @app.route('/')
 def default():
     dmx.resetFixtures()
@@ -28,14 +34,30 @@ def set_from_json():
     dmx.update(entry.get("fixtures"))
     return jsonify(dmx.fixtures)
 
+@app.route('/stopscript', methods=["GET"])
+def stopscript():
+    global process
+    if process is not None:
+        process.terminate()
+        process = None
+
+    return jsonify(dmx.fixtures)
+
 @app.route('/playscript', methods=["GET"])
 def playscript():
+    global process
     scriptname = request.args.get("script")
     pos = request.args.get("pos", 0)
     duration = request.args.get("duration")
     script = importlib.import_module("scripts." + scriptname)
-    script.play(dmx = dmx, args = request.args, pos=pos, duration=duration)
-
+    #script.play(dmx = dmx, args = request.args, pos=pos, duration=duration)
+    func = f(script.play, dmx = dmx, args = request.args, pos=pos, duration=duration)
+    if process is not None:
+        process.terminate()
+        process = None
+        sleep(1)
+    process = multiprocessing.Process(target=func)
+    process.start()
     return jsonify(dmx.fixtures)
 
 @app.route('/doorbell', methods=["GET"])

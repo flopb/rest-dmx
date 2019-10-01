@@ -2,11 +2,13 @@ from pygame import mixer  # Load the required library
 import keyboard
 import random
 
-startpos = 7000
-duration = 60000
+startpos = 35000
+duration = 10000
 
 ## Set filename of music-title
-file_name = "./sounds/Alice_Cooper_Feed_My_Frankenstein.mp3"
+#file_name = "./sounds/Culcha_Candela_Monsta.mp3"
+#file_name = "./sounds/Alice_Cooper_Feed_My_Frankenstein.mp3"
+file_name = "./sounds/Pirates_of_the_Caribbean.mp3"
 mixer.init()
 mixer.music.load(file_name)
 mixer.music.play(0, startpos/1000)
@@ -37,7 +39,7 @@ def save_script():
             elif key == "2":
                 content = 'script[' + str(pos) + '] = [f(fx.racer, color_brgbw=[255, 255, 0, 0, 0], splittime=0.1, laps=1, reverse=False)] #' + str(key) + "\n"
             else:
-                content = 'script[' + str(pos) + '] = [f(fx.set_all_rgb, values=fx.' + color + '(), update=True, autoOff=False)] #' + str(key) + "\n"
+                content = 'script[' + str(pos) + '] = [f(fx.set_back_rgb, values=fx.' + color + '(), update=True, autoOff=False)] #' + str(key) + "\n"
             previousColor = color
             file.write(content)
 

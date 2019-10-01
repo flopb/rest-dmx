@@ -20,10 +20,10 @@ def runScript(file_name, startpos, script, duration):
             if currenttime >= key and type(script[key]) == list:
                 print("Play Script:", key)
                 for func in script[key]:
-                    t1 = threading.Thread(target=func)
-                    t1.start()
-                    t1.setDaemon(True)
-                    #func()
+                    #t1 = threading.Thread(target=func)
+                    #t1.setDaemon(True)
+                    #t1.start()
+                    func()
                     script[key] = "done"
 
 def stop(dmx):
