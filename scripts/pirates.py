@@ -34,8 +34,10 @@ def play(**kwargs):
     script[16419] = [f(fx.fade_in, color=fx.green_blue(), fixtures=["rgb7","rgb8"], stepping=1, step_delay=0.05, end_brightness=15)]  # space
     script[19545] = [f(fx.blackout)]
     script[19546] = [f(fx.set_rgb, fixtures=["rgb1"], values=fx.green_blue(), update=True, autoOff=False)]  # space
+    script[21243] = [f(fx.blackout)]
     script[21246] = [f(fx.set_rgb, fixtures=["rgb3"], values=fx.green_blue(), update=True, autoOff=False)]
-    script[23036] = [f(fx.set_rgb, fixtures=["rgb2"], values=fx.green_blue(), update=True, autoOff=False)]
+    script[23034] = [f(fx.blackout)]
+    script[23036] = [f(fx.set_rgb, fixtures=["rgb2"], values=fx.red(), update=True, autoOff=False)]
     script[24855] = [f(fx.blackout)]
     script[24856] = [f(fx.uv_on)]  # space
     script[24857] = [f(fx.set_rgb, fixtures=["rgb4", "rgb5", "rgb6"], values=fx.green_blue(), update=True, autoOff=False)]

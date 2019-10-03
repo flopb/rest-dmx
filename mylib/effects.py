@@ -27,12 +27,12 @@ class FX:
             for fixture in fixtures:
                 self.mh_off(fixture)
 
-    def mh_set_start(self, fixture, rotation, tilt, autoOff=True, update=True):
+    def mh_set_start(self, fixture, rotation, tilt, autoOff=True, update=True, speed=50):
         fixtures = self.dmx.get_all_fixtures(filter=fixture)
         for fixture in fixtures:
             if autoOff:
                 self.mh_off(fixture)
-            self.dmx.setFixtureValues(fixture, {"1": rotation, "2": tilt, "5": 0, "7": 50})
+            self.dmx.setFixtureValues(fixture, {"1": rotation, "2": tilt, "5": 0, "7": speed})
         if update:
             self.dmx.update(fixtures=fixtures)
 

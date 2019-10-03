@@ -5,7 +5,7 @@ import Adafruit_PCA9685
 # Uncomment to enable debug output.
 import logging
 import random
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.CRITICAL)
 
 class Servo:
     def __init__(self):
@@ -44,8 +44,9 @@ class Servo:
     def set(self, servo, position):
         self.set_servo_pos(servo, self.fixed_positions.get(position))
 
-    def speak(self, servo):
-        value = random.randint(350, 450)
+    def speak(self, servo, value=None):
+        if value is None:
+            value = random.randint(350, 450)
         self.set_servo_pos(servo, value)
 
 

@@ -9,6 +9,9 @@ f = functools.partial
 def play(**kwargs):
     ## Default settings, always usable
     dmx = kwargs.get("dmx")
+    s = Servo()
+    s.set(servo="paule", position="close")
+
     fx = effects.FX(dmx)
     script = {}
     startpos = float(kwargs.get("pos"))
@@ -33,19 +36,25 @@ def play(**kwargs):
     script[2306] = [f(fx.set_rgb, fixtures=["rgb7", "rgb8"], values=fx.white_blue(), update=True, autoOff=0.2)]  # space
     script[2521] = [f(fx.set_rgb, fixtures=["rgb7", "rgb8"], values=fx.white_green(), update=True, autoOff=False)]  # space
     script[2580] = [f(fx.fade_out, fixtures=["rgb7", "rgb8"], speed=11)]
-    #
     script[2528] = [f(fx.set_back_rgb, values=fx.white(), update=True, autoOff=False)]  # space
     script[2987] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # space
     script[3668] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)]  # space
     script[4282] = [f(fx.set_back_rgb, values=fx.white_blue(), update=True, autoOff=False)]  # space
     script[4768] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # space
     script[5247] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # space
-    script[5439] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # space
-    script[5682] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # space
-    script[5884] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # space
-    script[6101] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # space
-    script[6146] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)]  # space
-    script[6584] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # space
+    script[5439] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False),
+                    f(s.set, servo="paule",position="half")]  # space
+    script[5682] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False),
+                    f(s.set, servo="paule",position="close")]  # space  # space
+    script[5884] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False),
+                    f(s.set, servo="paule",position="half")]  # space  # space
+    script[6101] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False),
+                    f(s.set, servo="paule",position="close")]  # space  # space
+    script[6146] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False),
+                    f(s.set, servo="paule",position="half")]  # space  # space
+    script[6584] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False),
+                    f(s.set, servo="paule",position="open")]
+    script[7000] = [f(s.set, servo="paule",position="close")]
     script[7302] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # space
     script[7966] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # space
     script[8000] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # space
