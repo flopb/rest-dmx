@@ -75,8 +75,9 @@ class uDMX():
         self.update()
 
     def setFixtureValues(self, fixture, values):
-        for value in values:
-            self.fixtures[fixture]["channels"][int(value)] = values[value]
+        if fixture is not None:
+            for value in values:
+                self.fixtures[fixture]["channels"][int(value)] = values[value]
 
     def getFixtureValues(self, fixture):
         return self.fixtures[fixture]["channels"]

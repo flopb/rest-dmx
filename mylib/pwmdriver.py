@@ -21,7 +21,7 @@ class Servo:
         print('{0}us per period'.format(self.pulse_length))
         self.pulse_length //= 4096  # 12 bits of resolution
         print('{0}us per bit'.format(self.pulse_length))
-        self.servos = {"guitar": 1, "paule": 0, "paulinchen": 2}
+        self.servos = {"paolo": 1, "paule": 0, "paulinchen": 2}
         self.fixed_positions = {"open": 150, "close": 450, "half": 350}
 
     # Helper function to make setting a servo pulse width simpler.

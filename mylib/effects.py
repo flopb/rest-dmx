@@ -313,8 +313,10 @@ class FX:
             for color in colors:
                 for f1, f2 in zip(fixtures1, fixtures2):
                     self.off(fixtures=previous_fixtures, update=False)
-                    self.dmx.setFixtureValues(f1, color)
-                    self.dmx.setFixtureValues(f2, color)
+                    if f1 is not None:
+                        self.dmx.setFixtureValues(f1, color)
+                    if f2 is not None:
+                        self.dmx.setFixtureValues(f2, color)
                     previous_fixtures = [f1, f2]
                     self.dmx.update()
                     sleep(speed)
