@@ -44,8 +44,10 @@ while True:
     # Move servo on channel O between extremes.
     #pwm.set_pwm(0, 0, servo_min)
     #pwm.set_pwm(1, 0, servo_max)
-    value = random.randint(350,450)
+    value = random.randint(150,450)
+    #value=450
     pwm.set_pwm(0, 0, value)
+    pwm.set_pwm(1, 0, value)
     time.sleep(0.2)
     #value = random.randint(280,320)
     #pwm.set_pwm(0, 0, value)

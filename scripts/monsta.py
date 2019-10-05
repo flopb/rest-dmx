@@ -47,18 +47,18 @@ def play(**kwargs):
     script[4768] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # space
     script[5247] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # space
     script[5439] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False),
-                    f(s.set, servo="paule",position="half")]  # space
+                    f(s.set, servo=["paule","paolo"],position="half")]  # space
     script[5682] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False),
-                    f(s.set, servo="paule",position="close")]  # space  # space
+                    f(s.set, servo=["paule","paolo"],position="close")]  # space  # space
     script[5884] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False),
-                    f(s.set, servo="paule",position="half")]  # space  # space
+                    f(s.set, servo=["paule","paolo"],position="half")]  # space  # space
     script[6101] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False),
-                    f(s.set, servo="paule",position="close")]  # space  # space
+                    f(s.set, servo=["paule","paolo"],position="close")]  # space  # space
     script[6146] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False),
-                    f(s.set, servo="paule",position="half")]  # space  # space
+                    f(s.set, servo=["paule","paolo"],position="half")]  # space  # space
     script[6584] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False),
-                    f(s.set, servo="paule",position="open")]
-    script[7000] = [f(s.set, servo="paule",position="close")]
+                    f(s.set, servo=["paule","paolo"],position="open")]
+    script[7000] = [f(s.set, servo=["paule","paolo"],position="close")]
     script[7302] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # space
     script[7966] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # space
     script[8000] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # space
@@ -207,7 +207,7 @@ def play(**kwargs):
     #script[40770] = [f(fx.set_rgb, fixtures=["rgb1", "rgb2", "rgb3"], values={"4": 255, "5": 0, "6": 0, "7": 70, "8": 0})]  # space
     script[40784] = [f(fx.mh_move_to, fixture="gobo1", rotation=205, tilt=160, speed=50, update=True)]  # space
 
-    script[42563] = [f(fx.mh_move_to, fixture="gobo2", rotation=50, tilt=55, speed=30, update=True)]  # space
+    script[42563] = [f(fx.mh_move_to, fixture="gobo2", rotation=55, tilt=85, speed=30, update=True)]  # space
 
     #script[61184] = [f(fx.set_rgb, fixtures=["rgb1", "rgb2", "rgb3"], values={"4": 0})]  # space
     #script[61185] = [f(fx.set_rgb, fixtures=["rgb4", "rgb5", "rgb6"], values={"4": 255, "5": 255, "6": 0, "7": 0, "8": 0})]  # space
@@ -287,6 +287,7 @@ def play(**kwargs):
     script[61192] = [f(fx.mh_move_to, fixture="gobo", rotation=175, tilt=255, speed=182, update=True)]  # space
     script[62546] = [f(fx.mh_off, fixture="gobo")]
     script[62549] = [f(fx.fade_out, speed=20)]
+    #
     script[62548] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # space
     script[63004] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # space
     script[63437] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)]  # space
@@ -296,6 +297,51 @@ def play(**kwargs):
     script[65247] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)]  # space
     script[65697] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # space
     script[66144] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # space
+    #gobo change between singers
+    script[64000] = [f(fx.mh_set_start, fixture="gobo", rotation=175, tilt=255)]  # space
+    script[64010] = [f(fx.mh_set_color, fixture="gobo", name="green")]
+    script[66250] = [f(fx.blackout)]  # space
+    script[66260] = [f(fx.set_rgb, fixtures=["rgb1", "rgb2", "rgb3"], values={"4": 255, "5": 0, "6": 0, "7": 255, "8": 0})]  # space
+    script[66280] = [f(fx.mh_move_to, fixture="gobo1", rotation=205, tilt=160, speed=50, update=True)]  # space
+    script[68043] = [f(fx.mh_move_to, fixture="gobo1", rotation=30, tilt=160, speed=50, update=True)]  # space
+    script[68044] = [f(fx.mh_set_color, fixture="gobo1", name="red")]
+    script[69783] = [f(fx.mh_move_to, fixture="gobo1", rotation=205, tilt=160, speed=50, update=True)]  # space
+    script[69780] = [f(fx.mh_set_color, fixture="gobo1", name="green")]
+    script[69784] = [f(fx.mh_move_to, fixture="gobo2", rotation=137, tilt=205, speed=50, update=True)]  # space
+    script[69781] = [f(fx.mh_set_color, fixture="gobo1", name="red")]
+    script[71582] = [f(fx.mh_move_to, fixture="gobo2", rotation=223, tilt=55, speed=50, update=True)]  # space
+
+    #script[66250] = [f(fx.blackout)]  # space
+    #script[73180] = [f(fx.set_rgb, fixtures=["rgb1", "rgb2", "rgb3"], values={"4": 255, "5": 0, "6": 0, "7": 255, "8": 0})]  # space
+    script[73189] = [f(fx.mh_move_to, fixture="gobo1", rotation=30, tilt=160, speed=50, update=True)]  # space
+    script[75000] = [f(fx.mh_move_to, fixture="gobo1", rotation=205, tilt=160, speed=50, update=True)]  # space
+    script[75189] = [f(fx.mh_set_color, fixture="gobo2", name="red")]
+    script[77000] = [f(fx.mh_move_to, fixture="gobo2", rotation=137, tilt=205, speed=50, update=True)]  # space
+    script[77001] = [f(fx.mh_set_color, fixture="gobo2", name="green")]
+    script[79597] = [f(fx.mh_move_to, fixture="gobo1", rotation=30, tilt=160, speed=50, update=True)]  # space
+    script[79500] = [f(fx.mh_set_color, fixture="gobo1", name="darkblue")]
+    script[79598] = [f(fx.mh_move_to, fixture="gobo2", rotation=223, tilt=55, speed=50, update=True)]  # space
+    script[79501] = [f(fx.mh_set_color, fixture="gobo2", name="darkblue")]
+    script[82200] = [f(fx.mh_off, fixture="gobo")]
+
+    #script[69784] = [f(fx.mh_move_to, fixture="gobo2", rotation=137, tilt=205, speed=50, update=True)]  # space
+    #script[69781] = [f(fx.mh_set_color, fixture="gobo1", name="red")]
+    #script[71582] = [f(fx.mh_move_to, fixture="gobo2", rotation=223, tilt=55, speed=50, update=True)]  # space
+    #script[61090] = [f(fx.mh_set_color, fixture="gobo1", name="red")]
+    #script[68000] = [f(fx.mh_move_to, fixture="gobo2", rotation=175, tilt=110, speed=140, update=True)]  # space
+    #script[61090] = [f(fx.mh_set_color, fixture="gobo2", name="red")]
+
+
+
+    #script[66280] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # space
+    #script[68044] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # space
+    #script[69783] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # space
+    #script[71582] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)]  # space
+    #script[73447] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # space
+    #script[75189] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)]  # space
+    #script[76997] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # space
+
+
     script[66625] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)]  # space
     script[67071] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # space
     script[67518] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # space

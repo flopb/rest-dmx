@@ -2,13 +2,13 @@ from pygame import mixer  # Load the required library
 import keyboard
 import random
 
-startpos = 35000
-duration = 10000
+startpos = 80000
+duration = 15000
 
 ## Set filename of music-title
-#file_name = "./sounds/Culcha_Candela_Monsta.mp3"
+file_name = "./sounds/Culcha_Candela_Monsta.mp3"
 #file_name = "./sounds/Alice_Cooper_Feed_My_Frankenstein.mp3"
-file_name = "./sounds/Pirates_of_the_Caribbean.mp3"
+#file_name = "./sounds/Pirates_of_the_Caribbean.mp3"
 mixer.init()
 mixer.music.load(file_name)
 mixer.music.play(0, startpos/1000)

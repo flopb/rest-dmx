@@ -42,7 +42,10 @@ class Servo:
         self.pwm.set_pwm(channel, 0, pulse)
 
     def set(self, servo, position):
-        self.set_servo_pos(servo, self.fixed_positions.get(position))
+        if type(servo) == str:
+            servo = [servo]
+        for i in servo:
+            self.set_servo_pos(i, self.fixed_positions.get(position))
 
     def speak(self, servo, value=None):
         if value is None:

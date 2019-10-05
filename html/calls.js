@@ -480,7 +480,7 @@ function play_script(scriptname) {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "http://192.168.178.53:8081/playscript?script=" + scriptname,
+      "url": "http://192.168.178.53:8080/playscript?script=" + scriptname,
       "method": "GET",
       "headers": {
         "cache-control": "no-cache",
