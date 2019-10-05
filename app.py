@@ -23,6 +23,18 @@ def default():
     dmx.resetFixtures()
     return jsonify(dmx.fixtures)
 
+@app.route('/fadeout')
+def fadeout():
+    from mylib.virtualdj import fadeout
+    fadeout()
+    return jsonify("ok")
+
+@app.route('/fadein')
+def fadein():
+    from mylib.virtualdj import fadein
+    fadein()
+    return jsonify("ok")
+
 @app.route('/set_from_json', methods=["POST"])
 def set_from_json():
     json = request.get_json()
