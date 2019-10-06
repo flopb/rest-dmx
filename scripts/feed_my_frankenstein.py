@@ -25,7 +25,55 @@ def play(**kwargs):
     ## Set filename of music-title
     file_name = "./sounds/Alice_Cooper_Feed_My_Frankenstein.mp3"
 
+    s = Servo()
+
     ## Here comes the script
+    #audio script
+    script["a2277"] = [f(s.speak, who=["paulinchen"], minmax=[350, 450])]  # t
+    script["a4762"] = [f(s.stop, who=["paulinchen"], minmax=[350, 450])]  # z
+    script["a4938"] = [f(s.speak, who=["paolo"], minmax=[350, 450])]  # t
+    script["a7474"] = [f(s.stop, who=["paolo"], minmax=[350, 450])]  # z
+
+    script["a7544"] = [f(s.speak, who=["paulinchen"], minmax=[250, 350])]  # t
+    script["a12105"] = [f(s.stop, who=["paulinchen"], minmax=[250, 350])]  # z
+    script["a36257"] = [f(s.speak, who=["paulinchen"], minmax=[350, 450])]  # t
+    script["a54675"] = [f(s.stop, who=["paulinchen"], minmax=[350, 450])]  # z
+    script["a55260"] = [f(s.speak, who=["paulinchen"], minmax=[250, 450])]  # t
+    script["a64207"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a64540"] = [f(s.speak, who=["paulinchen"], minmax=[250, 450])]  # t
+    script["a68829"] = [f(s.stop, who=["paulinchen"], minmax=[250, 450])]  # z
+    script["a69367"] = [f(s.speak, who=["paulinchen"], minmax=[250, 450])]  # t
+    script["a71676"] = [f(s.stop, who=["paulinchen"], minmax=[250, 450])]  # z
+    script["a74033"] = [f(s.speak, who=["paulinchen"], minmax=[350, 450])]  # t
+    script["a78336"] = [f(s.stop, who=["paulinchen"], minmax=[250, 450])]  # z
+    script["a78636"] = [f(s.speak, who=["paulinchen"], minmax=[250, 450])]  # t
+    script["a82966"] = [f(s.stop, who=["paulinchen"], minmax=[250, 450])]  # z
+    script["a85548"] = [f(s.speak, who=["paulinchen"], minmax=[350, 450])]  # t
+    script["a103832"] = [f(s.stop, who=["paulinchen"], minmax=[350, 450])]  # z
+    script["a104060"] = [f(s.speak, who=["paulinchen"], minmax=[350, 450])]  # t
+    script["a113844"] = [f(s.stop, who=["paulinchen"], minmax=[350, 450])]  # z
+    script["a113980"] = [f(s.speak, who=["paulinchen"], minmax=[350, 450])]  # t
+    script["a132446"] = [f(s.stop, who=["paulinchen"], minmax=[350, 450])]  # z
+    script["a133050"] = [f(s.speak, who=["paulinchen"], minmax=[350, 450])]  # t
+    script["a135385"] = [f(s.stop, who=["paulinchen"], minmax=[350, 450])]  # z
+    script["a135728"] = [f(s.speak, who=["paulinchen"], minmax=[350, 450])]  # t
+    script["a136921"] = [f(s.stop, who=["paulinchen"], minmax=[350, 450])]  # z
+    script["a137269"] = [f(s.speak, who=["paulinchen"], minmax=[350, 450])]  # t
+    script["a141888"] = [f(s.stop, who=["paulinchen"], minmax=[350, 450])]  # z
+    script["a142118"] = [f(s.speak, who=["paulinchen"], minmax=[350, 450])]  # t
+    script["a144672"] = [f(s.stop, who=["paulinchen"], minmax=[350, 450])]  # z
+    script["a145010"] = [f(s.speak, who=["paulinchen"], minmax=[350, 450])]  # t
+    script["a146916"] = [f(s.stop, who=["paulinchen"], minmax=[350, 450])]  # z
+    script["a147105"] = [f(s.speak, who=["paulinchen"], minmax=[350, 450])]  # t
+    script["a151464"] = [f(s.stop, who=["paulinchen"], minmax=[350, 450])]  # z
+    script["a187486"] = [f(s.speak, who=["paulinchen"], minmax=[350, 450])]  # t
+    script["a189171"] = [f(s.stop, who=["paulinchen"], minmax=[350, 450])]  # z
+    script["a200827"] = [f(s.speak, who=["paulinchen"], minmax=[350, 450])]  # t
+    script["a229842"] = [f(s.stop, who=["paulinchen"], minmax=[350, 450])]  # z
+    script["a230579"] = [f(s.speak, who=["paulinchen"], minmax=[350, 450])]  # t
+    script["a244481"] = [f(s.stop, who=["paulinchen"], minmax=[350, 450])]  # z
+
+    #light script
     script[0] = [f(fx.fog, intensity=255, duration=1.0)]  # manual
     script[7890] = [f(fx.mh_move_to, fixture="gobo", rotation=175, tilt=110, speed=150)]  # space
     script[10425] = [f(fx.mh_set_color, fixture="gobo", name="red")]

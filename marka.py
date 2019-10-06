@@ -2,12 +2,12 @@ from pygame import mixer  # Load the required library
 import keyboard
 import random
 
-startpos = 80000
-duration = 15000
+startpos = 140000
+duration = 30000
 
 ## Set filename of music-title
-file_name = "./sounds/Culcha_Candela_Monsta.mp3"
-#file_name = "./sounds/Alice_Cooper_Feed_My_Frankenstein.mp3"
+#file_name = "./sounds/Culcha_Candela_Monsta.mp3"
+file_name = "./sounds/Alice_Cooper_Feed_My_Frankenstein.mp3"
 #file_name = "./sounds/Pirates_of_the_Caribbean.mp3"
 mixer.init()
 mixer.music.load(file_name)
@@ -38,6 +38,17 @@ def save_script():
                 content = 'script[' + str(pos) + '] = [f(fx.blackout)] #' + str(key) + "\n"
             elif key == "2":
                 content = 'script[' + str(pos) + '] = [f(fx.racer, color_brgbw=[255, 255, 0, 0, 0], splittime=0.1, laps=1, reverse=False)] #' + str(key) + "\n"
+            elif key == "t":
+                content = 'script["a' + str(pos) + '"] = [f(s.speak, who=["paulinchen"], minmax=[350,450])] #' + str(key) + "\n"
+            elif key == "z":
+                content = 'script["a' + str(pos) + '"] = [f(s.speak, who=["paulinchen"], minmax=[350,450])] #' + str(key) + "\n"
+            elif key == "a":
+                content = 'script["a' + str(pos) + '"] = [f(s.speak, who=["paulinchen"], minmax=[450,550])] #' + str(key) + "\n"
+            elif key == "s":
+                content = 'script["a' + str(pos) + '"] = [f(s.speak, who=["paulinchen"], minmax=[350,450])] #' + str(key) + "\n"
+            elif key == "d":
+                content = 'script["a' + str(pos) + '"] = [f(s.speak, who=["paulinchen"], minmax=[150,350])] #' + str(key) + "\n"
+
             else:
                 content = 'script[' + str(pos) + '] = [f(fx.set_back_rgb, values=fx.' + color + '(), update=True, autoOff=False)] #' + str(key) + "\n"
             previousColor = color

@@ -12,9 +12,6 @@ f = functools.partial
 def play(**kwargs):
     ## Default settings, always usable
     dmx = kwargs.get("dmx")
-    s = Servo()
-    s.set(servo="paule", position="close")
-    s.set(servo="paolo", position="close")
 
     fx = effects.FX(dmx)
     script = {}  # type: Dict[int, Union[List[partial[bool]], List[Union[partial[bool], partial[None]]], List[partial[None]]]]
@@ -46,19 +43,12 @@ def play(**kwargs):
     script[4282] = [f(fx.set_back_rgb, values=fx.white_blue(), update=True, autoOff=False)]  # space
     script[4768] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # space
     script[5247] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # space
-    script[5439] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False),
-                    f(s.set, servo=["paule","paolo"],position="half")]  # space
-    script[5682] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False),
-                    f(s.set, servo=["paule","paolo"],position="close")]  # space  # space
-    script[5884] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False),
-                    f(s.set, servo=["paule","paolo"],position="half")]  # space  # space
-    script[6101] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False),
-                    f(s.set, servo=["paule","paolo"],position="close")]  # space  # space
-    script[6146] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False),
-                    f(s.set, servo=["paule","paolo"],position="half")]  # space  # space
-    script[6584] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False),
-                    f(s.set, servo=["paule","paolo"],position="open")]
-    script[7000] = [f(s.set, servo=["paule","paolo"],position="close")]
+    script[5439] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # space
+    script[5682] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # space  # space
+    script[5884] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # space  # space
+    script[6101] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # space  # space
+    script[6146] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)]  # space  # space
+    script[6584] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]
     script[7302] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # space
     script[7966] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # space
     script[8000] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # space

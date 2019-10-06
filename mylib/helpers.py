@@ -12,7 +12,12 @@ def runScript(file_name, startpos, script, duration):
 
     if startpos != 0:
         for key in script.keys():
-            if startpos > key:
+            if (str(key)[0] == "a"):
+                # print("Found audio key", key)
+                time = int(str(key)[1:])
+            else:
+                time = key
+            if startpos > time:
                 script[key] = "done"
 
     while mixer.music.get_busy():
@@ -20,7 +25,13 @@ def runScript(file_name, startpos, script, duration):
         if duration is not None and currenttime > (startpos + duration):
             mixer.music.stop()
         for key in script.keys():
-            if currenttime >= key and type(script[key]) == list:
+            if(str(key)[0] == "a"):
+                #print("Found audio key", key)
+                time = int(str(key)[1:])
+            else:
+                time = key
+
+            if currenttime >= time and type(script[key]) == list:
                 print("Play Script:", key)
                 for func in script[key]:
                     #t1 = threading.Thread(target=func)
