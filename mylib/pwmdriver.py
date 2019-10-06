@@ -80,25 +80,26 @@ class Servo:
         pause = 0.2
         min=350
         max=450
+        ispeakers = {"paulinchen":0, "paolo":0}
         while(True):
             try:
                 data = self.q.get_nowait()
                 for speaker in data.get("who"):
                     if data.get("speak"):
-                        active_speakers.append(speaker)
+                        ispeakers[speaker] += 1
                     else:
                         self.set_servo_pos(speaker, self.servo_max)
-                        active_speakers.remove(speaker)
+                        ispeakers[speaker] -= 1
 
-                    if data.get("pause"):
-                        pause = data.get("pause")
+                if data.get("pause"):
+                    pause = data.get("pause")
 
-                    if data.get("minmax"):
-                        min = data.get("minmax")[0]
-                        max = data.get("minmax")[1]
+                if data.get("minmax"):
+                    min = data.get("minmax")[0]
+                    max = data.get("minmax")[1]
 
 
-                print("Currently active speakers:", active_speakers, "Pause:", pause)
+                print("Currently active speakers:", ispeakers, "Pause:", pause)
 
                 self.q.task_done()
             except:
@@ -106,8 +107,9 @@ class Servo:
 
             newvalue = random.randint(min, max)
             value = newvalue
-            for speaker in active_speakers:
-                self.set_servo_pos(speaker, value)
+            for speaker in ispeakers.keys():
+                if(ispeakers[speaker] > 0):
+                    self.set_servo_pos(speaker, value)
             time.sleep(pause)
 
 

@@ -2,13 +2,13 @@ from pygame import mixer  # Load the required library
 import keyboard
 import random
 
-startpos = 140000
+startpos = 229000
 duration = 30000
 
-## Set filename of music-title
+## Set filename of music-titlezazazszszszsz
 #file_name = "./sounds/Culcha_Candela_Monsta.mp3"
 file_name = "./sounds/Alice_Cooper_Feed_My_Frankenstein.mp3"
-#file_name = "./sounds/Pirates_of_the_Caribbean.mp3"
+#file_name = "./sounds/Pirates_of_the_Caribbean.mp3"dzdzdddzdzdz
 mixer.init()
 mixer.music.load(file_name)
 mixer.music.play(0, startpos/1000)
@@ -41,12 +41,12 @@ def save_script():
             elif key == "t":
                 content = 'script["a' + str(pos) + '"] = [f(s.speak, who=["paulinchen"], minmax=[350,450])] #' + str(key) + "\n"
             elif key == "z":
-                content = 'script["a' + str(pos) + '"] = [f(s.speak, who=["paulinchen"], minmax=[350,450])] #' + str(key) + "\n"
-            elif key == "a":
-                content = 'script["a' + str(pos) + '"] = [f(s.speak, who=["paulinchen"], minmax=[450,550])] #' + str(key) + "\n"
-            elif key == "s":
-                content = 'script["a' + str(pos) + '"] = [f(s.speak, who=["paulinchen"], minmax=[350,450])] #' + str(key) + "\n"
+                content = 'script["a' + str(pos) + '"] = [f(s.stop, who=["paulinchen"])] #' + str(key) + "\n"
             elif key == "d":
+                content = 'script["a' + str(pos) + '"] = [f(s.speak, who=["paulinchen"], minmax=[350,500])] #' + str(key) + "\n"
+            elif key == "s":
+                content = 'script["a' + str(pos) + '"] = [f(s.speak, who=["paulinchen"], minmax=[300,450])] #' + str(key) + "\n"
+            elif key == "a":
                 content = 'script["a' + str(pos) + '"] = [f(s.speak, who=["paulinchen"], minmax=[150,350])] #' + str(key) + "\n"
 
             else:
