@@ -6,10 +6,11 @@ import functools
 
 f = functools.partial
 
+
 def play(**kwargs):
     dmx = kwargs.get("dmx")
-    #servo = Servo()
-    #servo.set("paule", "open")
+    # servo = Servo()
+    # servo.set("paule", "open")
     fx = effects.FX(dmx)
     script = {}
     startpos = float(kwargs.get("pos"))
@@ -20,7 +21,7 @@ def play(**kwargs):
     fx.mh_set_color("gobo", "darkblue")
     ## Create initial mood
     fx.blackout()
-
+    # fx.sparkle(color=fx.white_blue(), duration=5 , sparkletime=0.1, pause=0.1)
     ## Set filename of music-title
     file_name = "./sounds/Alice_Cooper_Feed_My_Frankenstein.mp3"
 
@@ -124,8 +125,8 @@ def play(**kwargs):
     script[66948] = [f(fx.mh_strobe, fixture="gobo", color="red", speed=70)]  # space
     script[67749] = [f(fx.mh_move_to, fixture="gobo1", rotation=199, tilt=100, speed=210)]  # space
     script[67750] = [f(fx.mh_move_to, fixture="gobo2", rotation=155, tilt=100, speed=210)]  # space
-    script[69249] = [f(fx.mh_move_to, fixture="gobo1", rotation=199, tilt=160, speed=50)]  # space
-    script[69250] = [f(fx.mh_move_to, fixture="gobo2", rotation=142, tilt=175, speed=50)]  # space
+    script[69249] = [f(fx.mh_move_to, fixture="gobo1", rotation=205, tilt=160, speed=50)]  # space
+    script[69250] = [f(fx.mh_move_to, fixture="gobo2", rotation=138, tilt=175, speed=50)]  # space
     script[69351] = [f(fx.set_floor_rgb, values=fx.blue(), update=True, autoOff=False)]  # c
     script[69252] = [f(fx.uv_off)]  # 1
     script[71834] = [f(fx.mh_off, fixture="gobo")]  # 1
@@ -153,8 +154,8 @@ def play(**kwargs):
     script[76614] = [f(fx.mh_strobe, fixture="gobo", color="red", speed=70)]  # space
     script[77384] = [f(fx.mh_move_to, fixture="gobo1", rotation=199, tilt=100, speed=210)]  # space
     script[77385] = [f(fx.mh_move_to, fixture="gobo2", rotation=155, tilt=100, speed=210)]  # space
-    script[78934] = [f(fx.mh_move_to, fixture="gobo1", rotation=199, tilt=160, speed=50)]  # space
-    script[78935] = [f(fx.mh_move_to, fixture="gobo2", rotation=142, tilt=175, speed=50)]  # space
+    script[78934] = [f(fx.mh_move_to, fixture="gobo1", rotation=205, tilt=160, speed=50)]  # space
+    script[78935] = [f(fx.mh_move_to, fixture="gobo2", rotation=138, tilt=175, speed=50)]  # space
     script[79034] = [f(fx.set_floor_rgb, values=fx.blue(), update=True, autoOff=False)]  # c
     script[79035] = [f(fx.uv_off)]  # 1
 
@@ -190,7 +191,6 @@ def play(**kwargs):
     script[110155] = [f(fx.mh_set_start, fixture="gobo", rotation=175, tilt=255)]  # space
     script[110156] = [f(fx.mh_set_color, fixture="gobo", name="darkblue", update=True)]  # 1
 
-
     script[111969] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)]  # n
     script[112431] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # c
     script[112811] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # n
@@ -200,7 +200,6 @@ def play(**kwargs):
     script[114052] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)]  # n
     script[114175] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # c
     script[114317] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # c
-
 
     script[114317] = [f(fx.mh_set_start, fixture="gobo", rotation=175, tilt=255)]  # space
     script[114118] = [f(fx.mh_set_color, fixture="gobo", name="darkblue", update=True)]  # 1
@@ -213,8 +212,8 @@ def play(**kwargs):
     script[116522] = [f(fx.mh_strobe, fixture="gobo", color="red", speed=70)]  # space
     script[117222] = [f(fx.mh_move_to, fixture="gobo1", rotation=199, tilt=100, speed=210)]  # space
     script[117223] = [f(fx.mh_move_to, fixture="gobo2", rotation=155, tilt=100, speed=210)]  # space
-    script[118823] = [f(fx.mh_move_to, fixture="gobo1", rotation=199, tilt=160, speed=50)]  # space
-    script[118824] = [f(fx.mh_move_to, fixture="gobo2", rotation=142, tilt=175, speed=50)]  # space
+    script[118823] = [f(fx.mh_move_to, fixture="gobo1", rotation=205, tilt=160, speed=50)]  # space
+    script[118824] = [f(fx.mh_move_to, fixture="gobo2", rotation=138, tilt=175, speed=50)]  # space
     script[118924] = [f(fx.set_floor_rgb, values=fx.blue(), update=True, autoOff=False)]  # c
     script[118925] = [f(fx.uv_off)]  # 1
 
@@ -231,8 +230,8 @@ def play(**kwargs):
     script[125927] = [f(fx.mh_strobe, fixture="gobo", color="red", speed=70)]  # space
     script[126627] = [f(fx.mh_move_to, fixture="gobo1", rotation=199, tilt=100, speed=210)]  # space
     script[126628] = [f(fx.mh_move_to, fixture="gobo2", rotation=155, tilt=100, speed=210)]  # space
-    script[128228] = [f(fx.mh_move_to, fixture="gobo1", rotation=199, tilt=160, speed=50)]  # space
-    script[128229] = [f(fx.mh_move_to, fixture="gobo2", rotation=142, tilt=175, speed=50)]  # space
+    script[128228] = [f(fx.mh_move_to, fixture="gobo1", rotation=205, tilt=160, speed=50)]  # space
+    script[128229] = [f(fx.mh_move_to, fixture="gobo2", rotation=138, tilt=175, speed=50)]  # space
     script[128329] = [f(fx.set_floor_rgb, values=fx.blue(), update=True, autoOff=False)]  # c
     script[128330] = [f(fx.uv_off)]  # 1
 
@@ -251,8 +250,8 @@ def play(**kwargs):
     script[135521] = [f(fx.mh_strobe, fixture="gobo", color="red", speed=70)]  # space
     script[136221] = [f(fx.mh_move_to, fixture="gobo1", rotation=199, tilt=100, speed=210)]  # space
     script[136222] = [f(fx.mh_move_to, fixture="gobo2", rotation=155, tilt=100, speed=210)]  # space
-    script[137822] = [f(fx.mh_move_to, fixture="gobo1", rotation=199, tilt=160, speed=50)]  # space
-    script[137823] = [f(fx.mh_move_to, fixture="gobo2", rotation=142, tilt=175, speed=50)]  # space
+    script[137822] = [f(fx.mh_move_to, fixture="gobo1", rotation=205, tilt=160, speed=50)]  # space
+    script[137823] = [f(fx.mh_move_to, fixture="gobo2", rotation=138, tilt=175, speed=50)]  # space
 
     script[140190] = [f(fx.mh_off, fixture="gobo"),
                       f(fx.mh_set_start, fixture="gobo", rotation=175, tilt=255, speed=0),
@@ -267,13 +266,13 @@ def play(**kwargs):
     script[143334] = [f(fx.mh_set_color, fixture="gobo", name="red")]  # space
     script[145014] = [f(fx.mh_move_to, fixture="gobo1", rotation=199, tilt=100, speed=60)]  # space
     script[145015] = [f(fx.mh_move_to, fixture="gobo2", rotation=155, tilt=100, speed=60)]  # space
-    script[145586] = [f(fx.mh_move_to, fixture="gobo1", rotation=199, tilt=160, speed=60)]  # space
-    script[145587] = [f(fx.mh_move_to, fixture="gobo2", rotation=142, tilt=175, speed=60)]  # space
+    script[145586] = [f(fx.mh_move_to, fixture="gobo1", rotation=205, tilt=160, speed=60)]  # space
+    script[145587] = [f(fx.mh_move_to, fixture="gobo2", rotation=138, tilt=175, speed=60)]  # space
     script[146160] = [f(fx.mh_move_to, fixture="gobo1", rotation=199, tilt=100, speed=60)]  # space
     script[146161] = [f(fx.mh_move_to, fixture="gobo2", rotation=155, tilt=100, speed=60)]  # space
 
-    #script[134421] = [f(fx.mh_set_start, fixture="gobo1", rotation=199, tilt=170)]  # space
-    #script[134422] = [f(fx.mh_set_start, fixture="gobo2", rotation=155, tilt=170)]  # space
+    # script[134421] = [f(fx.mh_set_start, fixture="gobo1", rotation=199, tilt=170)]  # space
+    # script[134422] = [f(fx.mh_set_start, fixture="gobo2", rotation=155, tilt=170)]  # space
     script[147346] = [f(fx.mh_strobe, fixture="gobo", color="red", speed=70)]  # space
     script[147347] = [f(fx.mh_move_to, fixture="gobo1", rotation=199, tilt=170, speed=210)]  # space
     script[147346] = [f(fx.mh_move_to, fixture="gobo2", rotation=155, tilt=170, speed=210)]  # space
@@ -281,23 +280,215 @@ def play(**kwargs):
     script[149577] = [f(fx.racer, color_brgbw=[255, 255, 255, 255, 255], splittime=0.017, laps=7, reverse=True),
                       f(fx.mh_off, fixture="gobo")]
 
-    script[152065] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # space
-    script[153157] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)]  # space
-    script[154375] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # space
-    script[155569] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)]  # space
-    script[156744] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # space
-    script[157869] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # space
-    script[159111] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # space
-    script[160306] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # space
-    script[161448] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)]  # space
-    script[162635] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # space
-    script[163871] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # space
-    script[164976] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # space
-    script[166180] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # space
-    script[167318] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)]  # space
-    script[168539] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # space
-    script[169744] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)]  # space
+    # script[152065] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # space
+    script[153116] = [f(fx.sparkle, color=fx.white_blue(), duration=0.3, sparkletime=0.05, pause=0)]  # space
+    script[154119] = [f(fx.sparkle, color=fx.red(), duration=0.6, sparkletime=0.05, pause=0)]
+    script[155221] = [f(fx.sparkle, color=fx.white_blue(), duration=0.3, sparkletime=0.05, pause=0)]
+    script[156119] = [f(fx.sparkle, color=fx.red(), duration=1.2, sparkletime=0.05, pause=0)]
+    script[157676] = [f(fx.sparkle, color=fx.white_blue(), duration=0.3, sparkletime=0.05, pause=0)]  # space
+    script[158119] = [f(fx.sparkle, color=fx.red(), duration=0.6, sparkletime=0.05, pause=0)]
+    script[159676] = [f(fx.sparkle, color=fx.white_blue(), duration=1.5, sparkletime=0.05, pause=0)]  # space
+    script[161376] = [f(fx.kitt, fixtures=["rgb4", "rgb5", "rgb6"], color=fx.white_blue(), pausetime=0.03)]  # space
+    script[161876] = [f(fx.blackout)]
+    script[162276] = [f(fx.kitt, fixtures=["rgb6", "rgb5", "rgb4"], color=fx.white_blue(), pausetime=0.03)]  # space
+    script[162776] = [f(fx.blackout)]
 
+    script[163486] = [f(fx.kitt, fixtures=["rgb4", "rgb5", "rgb6"], color=fx.white_blue(), pausetime=0.03)]  # space
+    script[163986] = [f(fx.blackout)]
+    script[164586] = [f(fx.kitt, fixtures=["rgb6", "rgb5", "rgb4"], color=fx.white_blue(), pausetime=0.03)]  # space
+    script[165086] = [f(fx.blackout)]
+    script[165586] = [f(fx.kitt, fixtures=["rgb4", "rgb5", "rgb6"], color=fx.white_blue(), pausetime=0.03)]  # space
+    script[166086] = [f(fx.blackout)]
+    script[166886] = [f(fx.kitt, fixtures=["rgb6", "rgb5", "rgb4"], color=fx.white_blue(), pausetime=0.03)]  # space
+    script[167370] = [f(fx.blackout)]
+
+    script[167371] = [f(fx.sparkle, color=fx.white_blue(), duration=3.3, sparkletime=0.05, pause=0)]
+
+    script[170905] = [f(fx.set_back_rgb, values=fx.white_blue(), update=True, autoOff=False)]  # space
+    script[171205] = [f(fx.fade_out, speed=10)]  # space
+    script[172049] = [f(fx.set_back_rgb, values=fx.white_blue(), update=True, autoOff=0.1)]  # space
+    script[172222] = [f(fx.set_back_rgb, values=fx.white_blue(), update=True, autoOff=0.1)]  # space
+    script[172406] = [f(fx.set_back_rgb, values=fx.white_blue(), update=True, autoOff=0.1)]  # space
+    script[172564] = [f(fx.set_back_rgb, values=fx.white_blue(), update=True, autoOff=0.1)]  # space
+    script[172718] = [f(fx.set_back_rgb, values=fx.white_blue(), update=True, autoOff=False)]  # space
+    script[172818] = [f(fx.fade_out, speed=20)]  # space
+    script[173282] = [f(fx.set_back_rgb, values=fx.white_blue(), update=True, autoOff=0.1)]  # space
+    script[173555] = [f(fx.set_back_rgb, values=fx.white_blue(), update=True, autoOff=0.1)]  # space
+    script[173743] = [f(fx.set_back_rgb, values=fx.white_blue(), update=True, autoOff=0.1)]  # space
+    script[173913] = [f(fx.set_back_rgb, values=fx.white_blue(), update=True, autoOff=0.1)]  # space
+    script[174072] = [f(fx.set_back_rgb, values=fx.white_blue(), update=True, autoOff=0.1)]  # space
+    script[174264] = [f(fx.set_back_rgb, values=fx.white_blue(), update=True, autoOff=0.1)]  # space
+    script[174488] = [f(fx.set_back_rgb, values=fx.white_blue(), update=True, autoOff=0.1)]  # space
+    script[174732] = [f(fx.set_back_rgb, values=fx.white_blue(), update=True, autoOff=0.1)]  # space
+    script[174977] = [f(fx.set_back_rgb, values=fx.white_blue(), update=True, autoOff=0.1)]  # space
+    script[175210] = [f(fx.set_back_rgb, values=fx.white_blue(), update=True, autoOff=False)]  # space
+    script[175310] = [f(fx.fade_out, speed=20)]
+
+    script[175864] = [f(fx.set_back_rgb, values=fx.white_blue(), update=True, autoOff=False)]
+    script[176164] = [f(fx.fade_out, speed=10)]
+    script[176843] = [f(fx.set_back_rgb, values=fx.white_blue(), update=True, autoOff=0.1)]  # c
+    script[177015] = [f(fx.set_back_rgb, values=fx.white_blue(), update=True, autoOff=0.1)]  # n
+    script[177198] = [f(fx.set_back_rgb, values=fx.white_blue(), update=True, autoOff=0.1)]  # c
+    script[177416] = [f(fx.set_back_rgb, values=fx.white_blue(), update=True, autoOff=False)]  # n
+    # script[178172] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)]  # n
+    script[177516] = [f(fx.fade_out, speed=10, limit=50)]
+    script[177716] = [f(fx.fade_in, fixtures=["rgb1", "rgb2", "rgb3"], color=fx.white_blue(), start_brightness=50, end_brightness=200, stepping=5)]
+    script[177816] = [f(fx.fade_out, speed=10, limit=50)]
+    script[177916] = [f(fx.fade_in, fixtures=["rgb1", "rgb2", "rgb3"], color=fx.white_blue(), start_brightness=50, end_brightness=200, stepping=10)]
+    script[178016] = [f(fx.fade_out, speed=10)]
+
+    script[178017] = [f(fx.mh_set_start, fixture="gobo1", rotation=175, tilt=255, update=False),
+                      f(fx.mh_set_color, fixture="gobo", name="red", update=False),
+                      f(fx.mh_set_gobo, fixture="gobo", name="bubbles", update=True)]  # space
+
+    script[180356] = [f(fx.set_front_rgb, values=fx.white_red(), update=True, autoOff=False)]  # space
+    script[180456] = [f(fx.fade_out, speed=5)]
+    script[181456] = [f(fx.sparkle, color=fx.red(), duration=0.7, sparkletime=0.05, pause=0)]
+    script[182856] = [f(fx.sparkle, color=fx.red(), duration=1.8, sparkletime=0.05, pause=0)]
+    script[184656] = [f(fx.set_front_rgb, values=fx.white_red(), update=True, autoOff=False),
+                      f(fx.fade_out, speed=10)]
+    script[185556] = [f(fx.set_front_rgb, values=fx.white_red(), update=True, autoOff=False),
+                      f(fx.fade_out, speed=10)]
+    script[186556] = [f(fx.set_front_rgb, values=fx.white_red(), update=True, autoOff=False),
+                      f(fx.fade_out, speed=20, limit=50),
+                      f(fx.fade_in, fixtures=["rgb4", "rgb5", "rgb6"], color=fx.white_red(), start_brightness=50, end_brightness=200, stepping=10),
+                      f(fx.fade_out, speed=6)]
+
+    script[187972] = [f(fx.mh_move_to, fixture="gobo1", rotation=35, tilt=160, speed=30, update=True),
+                      f(fx.mh_move_to, fixture="gobo2", rotation=55, tilt=85, speed=30, update=True)]  # space
+
+    script[189815] = [f(fx.mh_off, fixture="gobo", update=True),
+                      f(fx.set_front_rgb, values=fx.white_red(), update=True, autoOff=False)]
+    script[190315] = [f(fx.fade_out, speed=20, limit=50),
+                      f(fx.fade_in, fixtures=["rgb4", "rgb5", "rgb6"], color=fx.white_red(), start_brightness=50, end_brightness=200, stepping=10),
+                      f(fx.fade_out, speed=6)]
+    script[192423] = [f(fx.set_rgb, fixtures=["rgb6"], values=fx.red())]  # space
+    script[192892] = [f(fx.set_rgb, fixtures=["rgb4"], values=fx.red())]  # space
+    script[193305] = [f(fx.set_rgb, fixtures=["rgb5"], values=fx.red())]  # space
+    script[194856] = [f(fx.fade_out, speed=20, limit=10),
+                      f(fx.fade_in, fixtures=["rgb4", "rgb5", "rgb6"], color=fx.red(), start_brightness=50, end_brightness=200, stepping=10),
+                      f(fx.fade_out, speed=20, limit=10),
+                      f(fx.fade_in, fixtures=["rgb4", "rgb5", "rgb6"], color=fx.red(), start_brightness=50, end_brightness=200, stepping=10),
+                      f(fx.fade_out, speed=20, limit=10),
+                      f(fx.fade_in, fixtures=["rgb4", "rgb5", "rgb6"], color=fx.red(), start_brightness=50, end_brightness=200, stepping=10),
+                      f(fx.fade_out, speed=2)]  # space
+
+    script[192893] = [f(fx.mh_set_start, fixture="gobo", rotation=175, tilt=255),
+                      f(fx.mh_set_gobo, fixture="gobo", name="spot")]  # space
+    script[199486] = [f(fx.sparkle, color=fx.red(), duration=1.5, sparkletime=0.05, pause=0)]
+
+    script[201600] = [  # f(fx.blackout),
+        # f(fx.uv_on),
+        f(fx.mh_move_to, fixture="gobo", rotation=175, tilt=110, speed=70)]  # space
+    script[201947] = [f(fx.mh_move_to, fixture="gobo", rotation=175, tilt=255, speed=70)]  # space
+    script[203347] = [f(fx.mh_set_start, fixture="gobo1", rotation=199, tilt=170)]  # space
+    script[203348] = [f(fx.mh_set_start, fixture="gobo2", rotation=155, tilt=170)]  # space
+    script[203748] = [f(fx.mh_strobe, fixture="gobo", color="red", speed=70)]  # space
+    script[204549] = [f(fx.mh_move_to, fixture="gobo1", rotation=199, tilt=100, speed=210)]  # space
+    script[204550] = [f(fx.mh_move_to, fixture="gobo2", rotation=155, tilt=100, speed=210)]  # space
+    script[206049] = [f(fx.mh_move_to, fixture="gobo1", rotation=205, tilt=160, speed=50)]  # space
+    script[206050] = [f(fx.mh_move_to, fixture="gobo2", rotation=138, tilt=175, speed=50)]  # space
+    script[206151] = [f(fx.set_floor_rgb, values=fx.blue(), update=True, autoOff=False)]  # c
+    script[206052] = [f(fx.uv_off)]  # 1
+    script[208634] = [f(fx.mh_off, fixture="gobo")]  # 1
+
+    script[208635] = [f(fx.racer, color_brgbw=[255, 255, 255, 255, 255], splittime=0.017, laps=2, reverse=False)]
+    script[208664] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # n
+    script[208758] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # c
+    script[208904] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # n
+    script[209039] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)]  # c
+    script[209203] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # n
+    script[209513] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # c
+    script[209652] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)]  # n
+    script[209985] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # c
+    script[210107] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)]  # n
+    script[210201] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # c
+    script[210440] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)]  # n
+    script[210701] = [f(fx.set_back_rgb, values=fx.green(), update=True, autoOff=False)]  # c
+    script[210700] = [f(fx.mh_set_start, fixture="gobo", rotation=175, tilt=255)]  # space
+    script[210991] = [f(fx.mh_set_color, fixture="gobo", name="darkblue", update="false")]  # 1
+    script[210992] = [f(fx.blackout)]  # 1
+    script[210993] = [f(fx.uv_on)]  # 1
+    script[210994] = [f(fx.mh_move_to, fixture="gobo", rotation=175, tilt=110, speed=70)]  # space
+    script[211619] = [f(fx.mh_move_to, fixture="gobo", rotation=175, tilt=255, speed=70)]  # space
+    script[212814] = [f(fx.mh_set_start, fixture="gobo1", rotation=199, tilt=170)]  # space
+    script[212815] = [f(fx.mh_set_start, fixture="gobo2", rotation=155, tilt=170)]  # space
+    script[213414] = [f(fx.mh_strobe, fixture="gobo", color="red", speed=70)]  # space
+    script[214184] = [f(fx.mh_move_to, fixture="gobo1", rotation=199, tilt=100, speed=210)]  # space
+    script[214185] = [f(fx.mh_move_to, fixture="gobo2", rotation=155, tilt=100, speed=210)]  # space
+    script[215734] = [f(fx.mh_move_to, fixture="gobo1", rotation=205, tilt=160, speed=50)]  # space
+    script[215735] = [f(fx.mh_move_to, fixture="gobo2", rotation=138, tilt=175, speed=50)]  # space
+    script[215834] = [f(fx.set_floor_rgb, values=fx.blue(), update=True, autoOff=False)]  # c
+    script[215835] = [f(fx.uv_off)]  # 1
+
+    script[218500] = [f(fx.mh_off, fixture="gobo")]  # 1
+
+    script[218647] = [f(fx.kitt, fixtures=["rgb1", "rgb2", "rgb3"], color=fx.red(), pausetime=0.1)]  # space
+    script[219199] = [f(fx.kitt, fixtures=["rgb4", "rgb5", "rgb6"], color=fx.red(), pausetime=0.1)]  # space
+    script[219599] = [f(fx.fade_out, speed=15),
+                      f(fx.sparkle, fixtures=["rgb4", "rgb5", "rgb6"], color=fx.blue(), duration=0.5, sparkletime=0.05, pause=0)]
+
+    script[220482] = [f(fx.mh_move_to, fixture="gobo", rotation=175, tilt=110, speed=70)]  # space
+    script[221107] = [f(fx.mh_move_to, fixture="gobo", rotation=175, tilt=235, speed=70),
+                      f(fx.sparkle, fixtures=["rgb4", "rgb5", "rgb6"], color=fx.blue(), duration=2.4, sparkletime=0.05, pause=0)]  # space
+    script[223403] = [f(fx.mh_move_to, fixture="gobo", rotation=175, tilt=120, speed=200),
+                      f(fx.sparkle, fixtures=["rgb4", "rgb5", "rgb6"], color=fx.blue(), duration=1.6, sparkletime=0.05, pause=0)]  # space
+
+    script[225222] = [f(fx.mh_move_to, fixture="gobo1", rotation=205, tilt=160, speed=50)]  # space
+    script[225223] = [f(fx.mh_set_gobo, fixture="gobo", name="puzzle"),
+                      f(fx.mh_set_color, fixture="gobo", name="red"),
+                      f(fx.mh_move_to, fixture="gobo2", rotation=138, tilt=175, speed=50),
+                      f(fx.sparkle, fixtures=["rgb4", "rgb5", "rgb6"], color=fx.blue(), duration=1.8, sparkletime=0.05, pause=0)
+                      ]  # space
+
+    script[227412] = [f(fx.mh_strobe, fixture="gobo", color="red", speed=70)]  # space
+    script[227512] = [f(fx.mh_move_to, fixture="gobo", rotation=175, tilt=110, speed=160, autoOn=False)]
+    script[228012] = [f(fx.mh_move_to, fixture="gobo1", rotation=95, tilt=110, speed=160, autoOn=False),
+                      f(fx.mh_move_to, fixture="gobo2", rotation=255, tilt=110, speed=160, autoOn=False),
+                      f(fx.sparkle, fixtures=["rgb4", "rgb5", "rgb6"], color=fx.red(), duration=1.2, sparkletime=0.05, pause=0)]
+    script[229312] = [f(fx.mh_off, fixture="gobo"),
+                      f(fx.mh_set_start, fixture="gobo", rotation=175, tilt=235),
+                      f(fx.mh_set_gobo, fixture="gobo", name="spot")]  # 1
+
+    script[229901] = [f(fx.mh_move_to, fixture="gobo", rotation=175, tilt=110, speed=70)]  # space
+    script[230526] = [f(fx.mh_move_to, fixture="gobo", rotation=175, tilt=235, speed=70),
+                            f(fx.sparkle, fixtures=["rgb4", "rgb5", "rgb6"], color=fx.red(), duration=1.8, sparkletime=0.05, pause=0)]  # space
+
+    script[232269] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # space
+    script[232816] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)]  # space
+    script[233440] = [f(fx.set_back_rgb, values=fx.blue(), update=True, autoOff=False)]  # space
+
+    script[234569] = [f(fx.blackout),
+                      f(fx.uv_on),
+                      f(fx.mh_set_gobo, fixture="gobo", name="bubbles", update=True),
+                      f(fx.mh_move_to, fixture="gobo1", rotation=205, tilt=160, speed=150),
+                      f(fx.mh_move_to, fixture="gobo2", rotation=138, tilt=175, speed=150)]  # space
+    script[236644] = [f(fx.mh_move_to, fixture="gobo1", rotation=95, tilt=110, speed=160, autoOn=False),
+                      f(fx.mh_move_to, fixture="gobo2", rotation=255, tilt=110, speed=160, autoOn=False)]
+
+    script[239374] = [f(fx.mh_move_to, fixture="gobo", rotation=175, tilt=110, speed=70)]  # space
+    script[239374] = [f(fx.mh_move_to, fixture="gobo", rotation=175, tilt=235, speed=70),
+                      f(fx.sparkle, fixtures=["rgb4", "rgb5", "rgb6"], color=fx.red(), duration=1.8, sparkletime=0.05, pause=0)]  # space
+
+    script[241717] = [f(fx.mh_move_to, fixture="gobo", rotation=175, tilt=110, speed=70)]
+    script[242384] = [f(fx.mh_set_color, fixture="gobo", name="red")]
+    script[242484] = [ f(fx.mh_move_to, fixture="gobo1", rotation=205, tilt=160, speed=150),
+                      f(fx.mh_move_to, fixture="gobo2", rotation=138, tilt=175, speed=150)]
+
+    script[244021] = [f(fx.sparkle, fixtures=["rgb4", "rgb5", "rgb6"], color=fx.blue(), duration=1.8, sparkletime=0.05, pause=0)]  # space
+    script[246393] = [f(fx.sparkle, fixtures=["rgb4", "rgb5", "rgb6"], color=fx.red(), duration=1.8, sparkletime=0.05, pause=0)]  # space
+    script[248771] = [ f(fx.sparkle, fixtures=["rgb4", "rgb5", "rgb6"], color=fx.green(), duration=1.8, sparkletime=0.05, pause=0)]  # space
+    script#[251074] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)]  # space
+
+    script[251148] = [f(fx.set_all_rgb, values=fx.red(), update=True, autoOff=False)]  # n
+    script[251281] = [f(fx.set_all_rgb, values=fx.blue(), update=True, autoOff=False)]  # c
+    script[251437] = [f(fx.set_all_rgb, values=fx.red(), update=True, autoOff=False)]  # n
+    script[251574] = [f(fx.set_all_rgb, values=fx.blue(), update=True, autoOff=False)]  # c
+    script[251743] = [f(fx.set_all_rgb, values=fx.red(), update=True, autoOff=False)]  # n
+    script[252019] = [f(fx.set_all_rgb, values=fx.blue(), update=True, autoOff=False)]  # c
+    script[252163] = [f(fx.set_all_rgb, values=fx.white_red(), update=True, autoOff=False),
+                      f(fx.uv_off),
+                      f(fx.fade_out, speed=5)]  # n
+    script[256163] = [f(fx.mh_off, fixture="gobo")]
     ## Start the script now
-    runScript(file_name=file_name,startpos=startpos,script=script,duration=duration)
-
+    runScript(file_name=file_name, startpos=startpos, script=script, duration=duration)

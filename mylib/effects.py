@@ -127,6 +127,26 @@ class FX:
         self.dmx.setFixtureValues("uv", {"1": 0, "2": 0, "3": 0, "4": 0})
         self.dmx.update(fixtures="uv")
 
+    def sparkle(self, color, fixtures=None, duration=0.5, sparkletime=0.1, pause=0.2, sparkle_amount=1):
+        if fixtures is None:
+            fixtures = self.dmx.get_all_fixtures()
+        if sparkle_amount > len(fixtures):
+            sparkle_amount=len(fixtures)
+        amount = random.randint(1, sparkle_amount)
+
+        t_end = time.time() + duration
+        while time.time() < t_end:
+            fix = random.sample(fixtures, amount)
+            for fixture in fix:
+                self.dmx.setFixtureValues(fixture, color)
+                self.dmx.update()
+            sleep(sparkletime)
+            self.blackout()
+            sleep(pause)
+
+
+
+
     def random(self, color_brgbw, fixtures=None, splittime=0.1, laps=1, reverse=False):
         if fixtures is None:
             fixtures = self.dmx.get_all_fixtures()
@@ -237,6 +257,14 @@ class FX:
             self.dmx.update()
         return True
 
+    def kitt(self, fixtures, color, pausetime):
+        if type(fixtures) == str:
+            fixtures = [fixtures]
+
+        for fixture in fixtures:
+            self.dmx.setFixtureValues(fixture, color)
+            self.dmx.update()
+            sleep(pausetime)
 
     def color_row(self, fixtures, rows, duration=3, speed=0.2, rand=False):
         if type(fixtures) == str:
@@ -389,6 +417,8 @@ class FX:
         return {"1": 0, "2": 0, "3": 0, "4": 255, "5": 0, "6": 255, "7": 0, "8": 255}
     def white_blue(self):
         return {"1": 0, "2": 0, "3": 0, "4": 255, "5": 0, "6": 0, "7": 255, "8": 255}
+    def white_red(self):
+        return {"1": 0, "2": 0, "3": 0, "4": 255, "5": 255, "6": 0, "7": 0, "8": 255}
 
     def green_blue(self):
         return {"1": 0, "2": 0, "3": 0, "4": 255, "5": 0, "6": 128, "7": 128, "8": 0}
