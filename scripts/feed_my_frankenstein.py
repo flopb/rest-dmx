@@ -575,6 +575,7 @@ def play(**kwargs):
     script[252163] = [f(fx.set_all_rgb, values=fx.white_red(), update=True, autoOff=False),
                       f(fx.uv_off),
                       f(fx.fade_out, speed=5)]  # n
-    script[256163] = [f(fx.mh_off, fixture="gobo")]
+    script[253163] = [f(fx.mh_fade_out, fixtures="gobo", speed=3, limit=0, steppingtime=0.001)]
+
     ## Start the script now
     runScript(file_name=file_name, startpos=startpos, script=script, duration=duration)
