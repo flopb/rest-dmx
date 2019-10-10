@@ -43,6 +43,61 @@ class FX:
         if update:
             self.dmx.update(fixtures=fixtures)
 
+    def mh_fade_out(self, fixtures=None, speed=20, limit=0,steppingtime=0.01):
+        if type(fixtures) is str or fixtures is None:
+            fixtures = self.dmx.get_all_fixtures(fixtures)
+
+        brightness = 255
+        while brightness > limit:
+            for fixture in fixtures:
+                values = self.dmx.getFixtureValues(fixture)
+                fbrightness = values.get(6, 0)
+                values[6] = fbrightness - speed if fbrightness - speed > limit else limit
+                self.dmx.setFixtureValues(fixture=fixture, values=values)
+            brightness -= speed
+            self.dmx.update()
+            sleep(steppingtime)
+
+        for fixture in fixtures:
+            self.mh_off(fixture=fixture)
+            self.mh_set_brightness(fixture=fixture, brightness=255)
+
+        return True
+
+    def mh_fade_in(self, fixtures=None, color=None, speed=20, limit=255, start_brightness=0, steppingtime=0.01):
+        if type(fixtures) is str or fixtures is None:
+            fixtures = self.dmx.get_all_fixtures(fixtures)
+
+        for fixture in fixtures:
+            self.mh_set_color(fixture=fixture,name=color)
+            self.mh_set_brightness(fixture=fixture,brightness=start_brightness)
+            self.mh_on(fixture=fixture)
+
+        brightness = start_brightness
+        print(brightness, "<", limit)
+        while brightness < limit:
+            print(brightness)
+            for fixture in fixtures:
+                values = self.dmx.getFixtureValues(fixture)
+                fbrightness = values.get(6, 0)
+                values[6] = fbrightness + speed if fbrightness + speed < limit else limit
+                print("FadeIN", values)
+                self.dmx.setFixtureValues(fixture, {"6": brightness})
+            brightness += speed
+            self.dmx.update()
+            sleep(steppingtime)
+        return True
+
+    def mh_set_brightness(self, fixture=None, brightness=255):
+        if type(fixture) is str or fixture is None:
+            fixtures = self.dmx.get_all_fixtures(fixture)
+
+        for fixture in fixtures:
+            values = self.dmx.getFixtureValues(fixture)
+            self.dmx.setFixtureValues(fixture, {"6": brightness})
+
+        self.dmx.update(fixtures=fixtures)
+
     def mh_set_color(self,fixture, name, update=True):
         fixtures = self.dmx.get_all_fixtures(filter=fixture)
         for fixture in fixtures:
@@ -181,8 +236,10 @@ class FX:
         previous_fixture = None
         values_previous_fixture = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0}
         while laps_done < laps:
-            values = {"1": 0, "2": 0, "3": 0, "4": color_brgbw[0], "5": color_brgbw[1], "6": color_brgbw[2], "7": color_brgbw[3], "8": color_brgbw[4]}
-
+            if type(color_brgbw) == list:
+                values = {"1": 0, "2": 0, "3": 0, "4": color_brgbw[0], "5": color_brgbw[1], "6": color_brgbw[2], "7": color_brgbw[3], "8": color_brgbw[4]}
+            else:
+                values = color_brgbw
             for fixture in fixtures:
                 self.dmx.setFixtureValues(fixture, values)
                 if previous_fixture is not None:
@@ -348,6 +405,7 @@ class FX:
                     previous_fixtures = [f1, f2]
                     self.dmx.update()
                     sleep(speed)
+        self.blackout()
         return True
 
     def set_front_rgb(self, values, update=False, autoOff=False):
@@ -402,23 +460,40 @@ class FX:
             self.dmx.update()
         return True
 
+    def rgb_strobe(self, fixtures=None, colorname=None, speed=255):
+        values = {"1": 210, "2": self.strobe_colors.get(colorname), "3": speed, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0}
 
-    def blue(self):
-        return {"1": 0, "2": 0, "3": 0, "4": 255, "5": 0, "6": 0, "7": 255, "8": 0}
-    def red(self):
-        return {"1": 0, "2": 0, "3": 0, "4": 255, "5": 255, "6": 0, "7": 0, "8": 0}
-    def white(self):
-        return {"1": 0, "2": 0, "3": 0, "4": 255, "5": 0, "6": 0, "7": 0, "8": 255}
-    def green(self):
-        return {"1": 0, "2": 0, "3": 0, "4": 255, "5": 0, "6": 255, "7": 0, "8": 0}
-    def all(self):
-        return {"1": 0, "2": 0, "3": 0, "4": 255, "5": 255, "6": 255, "7": 255, "8": 255}
-    def white_green(self):
-        return {"1": 0, "2": 0, "3": 0, "4": 255, "5": 0, "6": 255, "7": 0, "8": 255}
-    def white_blue(self):
-        return {"1": 0, "2": 0, "3": 0, "4": 255, "5": 0, "6": 0, "7": 255, "8": 255}
-    def white_red(self):
-        return {"1": 0, "2": 0, "3": 0, "4": 255, "5": 255, "6": 0, "7": 0, "8": 255}
+        for fixture in fixtures:
+            print("Updating", fixture, "with", values)
+            self.dmx.setFixtureValues(fixture, values)
+        self.dmx.update()
+        return True
 
-    def green_blue(self):
-        return {"1": 0, "2": 0, "3": 0, "4": 255, "5": 0, "6": 128, "7": 128, "8": 0}
+    def rgb_strobe_front(self, colorname=None, speed=255):
+        self.rgb_strobe(fixtures=["rgb4","rgb5","rgb6"], colorname=colorname, speed=speed)
+    def rgb_strobe_back(self, colorname=None, speed=255):
+        self.rgb_strobe(fixtures=["rgb1","rgb2","rgb3"], colorname=colorname, speed=speed)
+    def rgb_strobe_floor(self, colorname=None, speed=255):
+        self.rgb_strobe(fixtures=["rgb7","rgb8"], colorname=colorname, speed=speed)
+
+
+
+    def blue(self, brightness=255):
+        return {"1": 0, "2": 0, "3": 0, "4": brightness, "5": 0, "6": 0, "7": 255, "8": 0}
+    def red(self, brightness=255):
+        return {"1": 0, "2": 0, "3": 0, "4": brightness, "5": 255, "6": 0, "7": 0, "8": 0}
+    def white(self, brightness=255):
+        return {"1": 0, "2": 0, "3": 0, "4": brightness, "5": 0, "6": 0, "7": 0, "8": 255}
+    def green(self, brightness=255):
+        return {"1": 0, "2": 0, "3": 0, "4": brightness, "5": 0, "6": 255, "7": 0, "8": 0}
+    def all(self, brightness=255):
+        return {"1": 0, "2": 0, "3": 0, "4": brightness, "5": 255, "6": 255, "7": 255, "8": 255}
+    def white_green(self, brightness=255):
+        return {"1": 0, "2": 0, "3": 0, "4": brightness, "5": 0, "6": 255, "7": 0, "8": 255}
+    def white_blue(self, brightness=255):
+        return {"1": 0, "2": 0, "3": 0, "4": brightness, "5": 0, "6": 0, "7": 255, "8": 255}
+    def white_red(self, brightness=255):
+        return {"1": 0, "2": 0, "3": 0, "4": brightness, "5": 255, "6": 0, "7": 0, "8": 255}
+
+    def green_blue(self, brightness=255):
+        return {"1": 0, "2": 0, "3": 0, "4": brightness, "5": 0, "6": 128, "7": 128, "8": 0}
