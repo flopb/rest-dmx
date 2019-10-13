@@ -8,9 +8,9 @@ class FX:
         self.dmx = dmx
         self.strobe_colors = {"all": 1, "red": 40, "green": 50, "blue":60, "yellow": 70, "cyan":80, "purple": 90, "white": 100 }
         self.mh_colors = {"white": 1, "red": 16, "lightblue": 32, "orange": 48, "darkblue": 64, "yellow": 80, "green": 96, "violet": 112}
-        self.mh_gobos = {"spiral": 0, "star": 8, "spot": 16, "flower": 24, "dotrings": 32, "mudball": 40, "puzzle": 48, "bubbles": 56}
-        self.mh_gobos_jitter = {"spiral": 64, "star": 72, "spot": 80, "flower": 88, "dotrings": 96, "mudball": 104, "puzzle": 112,
-                         "bubbles": 120}
+        self.mh_gobos = {"spiral": 0, "star": 8, "spot": 16, "flower": 24, "dotrings": 32, "mudball": 40, "puzzle": 48, "bubbles": 56,
+                         "jspiral": 64, "jstar": 72, "jspot": 80, "jflower": 88, "jdotrings": 96, "jmudball": 104, "jpuzzle": 112,
+                         "jbubbles": 120}
 
     def mh_move_to(self, fixture, rotation, tilt, speed, autoOn=True, update=True, autoOffAfter=False):
         fixtures = self.dmx.get_all_fixtures(filter=fixture)
@@ -105,7 +105,7 @@ class FX:
         if update:
             self.dmx.update(fixtures=fixtures)
 
-    def mh_off(self, fixture, update=True):
+    def mh_off(self, fixture="gobo", update=True):
         fixtures = self.dmx.get_all_fixtures(filter=fixture)
         for fixture in fixtures:
             self.dmx.setFixtureValues(fixture, {"5": 1})
@@ -171,7 +171,7 @@ class FX:
             value = right
         else:
             value = left
-        self.mh_move_to("gobo", rotation=132, tilt=value, speed=40, update=True)
+        self.mh_move_to("gobo", rotation=132, tilt=value, speed=speed, update=True)
 
 
     def uv_on(self):
@@ -181,6 +181,16 @@ class FX:
     def uv_off(self):
         self.dmx.setFixtureValues("uv", {"1": 0, "2": 0, "3": 0, "4": 0})
         self.dmx.update(fixtures="uv")
+
+    def uv_fade_out(self, speed=20, limit=0):
+        brightness = 255
+        while brightness > limit:
+            self.dmx.setFixtureValues("uv", {"1": brightness, "2": brightness, "3": brightness, "4": brightness})
+            self.dmx.update(fixtures="uv")
+            brightness -= speed
+
+        return True
+
 
     def sparkle(self, color, fixtures=None, duration=0.5, sparkletime=0.1, pause=0.2, sparkle_amount=1):
         if fixtures is None:
@@ -279,6 +289,46 @@ class FX:
         print("FOG OFF FOR", duration)
         return True
 
+    def rgb_crossfade(self, fixtures_in, color, fixtures_out, in_stepping=20, out_stepping=20, step_delay=0, end_brightness=255):
+        if type(fixtures_in) is str:
+            fixtures_in = self.dmx.get_all_fixtures(filter=fixtures_in)
+        if type(fixtures_out) is str:
+            fixtures_out = self.dmx.get_all_fixtures(filter=fixtures_out)
+
+        for fixture_in in fixtures_in:
+            self.dmx.setFixtureValues(fixture_in, color)
+
+
+        max_brightness = 0
+        for fixture_out in fixtures_out:
+            tmp_brightness = self.dmx.getFixtureValues(fixture_out).get(4)
+            if tmp_brightness > max_brightness:
+                max_brightness = tmp_brightness
+
+        #print("Starting from maxvalue:", max_brightness)
+        values = color
+        in_brightness = 0
+
+        while in_brightness < end_brightness or max_brightness > 0:
+            for fixture_in in fixtures_in:
+                values = self.dmx.getFixtureValues(fixture_in)
+                in_brightness = values.get(4, 0)
+                values[4] = int(in_brightness + in_stepping) if in_brightness + in_stepping <= end_brightness else end_brightness
+                self.dmx.setFixtureValues(fixture_in, values)
+                #print("New in value for fixture", fixture_in, values)
+                #self.dmx.update()
+
+            for fixture_out in fixtures_out:
+                values = self.dmx.getFixtureValues(fixture_out)
+                fbrightness = values.get(4, 0)
+                values[4] = fbrightness - out_stepping if fbrightness - out_stepping > 0 else 0
+                self.dmx.setFixtureValues(fixture=fixture_out, values=values)
+                #print("New out value for fixture", fixture_out, values)
+            self.dmx.update()
+            max_brightness -= out_stepping
+
+            sleep(step_delay)
+
     def fade_in(self, color, fixtures=None, stepping=20, start_brightness=0, end_brightness=255, step_delay=0):
         if type(fixtures) is str:
             fixtures = self.dmx.get_all_fixtures(filter=fixtures)
@@ -295,6 +345,7 @@ class FX:
                 brightness = values.get(4, 0)
                 values[4] = int(brightness + stepping) if brightness + stepping <= end_brightness else end_brightness
                 self.dmx.setFixtureValues(fixture, values)
+
             self.dmx.update()
             sleep(step_delay)
         return True
@@ -494,6 +545,15 @@ class FX:
         return {"1": 0, "2": 0, "3": 0, "4": brightness, "5": 0, "6": 0, "7": 255, "8": 255}
     def white_red(self, brightness=255):
         return {"1": 0, "2": 0, "3": 0, "4": brightness, "5": 255, "6": 0, "7": 0, "8": 255}
-
     def green_blue(self, brightness=255):
         return {"1": 0, "2": 0, "3": 0, "4": brightness, "5": 0, "6": 128, "7": 128, "8": 0}
+    def green_blue_white(self, brightness=255):
+        return {"1": 0, "2": 0, "3": 0, "4": brightness, "5": 0, "6": 128, "7": 128, "8": 255}
+    def yellow(self, brightness=255):
+        return {"1": 0, "2": 0, "3": 0, "4": brightness, "5": 255, "6": 255, "7": 0, "8": 0}
+    def orange(self, brightness=255):
+        return {"1": 0, "2": 0, "3": 0, "4": brightness, "5": 255, "6": 255, "7": 0, "8": 0}
+    def violet(self, brightness=255):
+        return {"1": 0, "2": 0, "3": 0, "4": brightness, "5": 255, "6": 0, "7": 255, "8": 0}
+    def purple(self, brightness=255):
+        return {"1": 0, "2": 0, "3": 0, "4": brightness, "5": 70, "6": 0, "7": 255, "8": 0}
