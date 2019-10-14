@@ -2,8 +2,8 @@ from pygame import mixer  # Load the required library
 import keyboard
 import random
 
-startpos = 0
-duration = 15000
+startpos = 53000
+duration = 35 000
 
 ## Set filename of music-title
 #file_name = "./sounds/Culcha_Candela_Monsta.mp3"
@@ -61,6 +61,12 @@ def save_script():
                 content = 'script[' + str(pos) + '] = [f(fx.mh_move_to, fixture = "gobo", rotation = 175, tilt = 255, speed = 70, update = True)] #' + str(key) + "\n"
             elif str(key) == "l":
                 content = 'script[' + str(pos) + '] = [f(fx.set_rgb, fixtures=["rgb4","rgb5","rgb6"], values=fx.white(), update=True, autoOff=False)] #' + str(key) + "\n"
+            elif str(key) == "c":
+                content = 'script[' + str(pos) + '] = [f(fx.set_rgb, fixtures=["rgb4"], values=fx.white(), update=True, autoOff=0.1)] #' + str(key) + "\n"
+            elif str(key) == "v":
+                content = 'script[' + str(pos) + '] = [f(fx.set_rgb, fixtures=["rgb5"], values=fx.white(), update=True, autoOff=0.1)] #' + str(key) + "\n"
+            elif str(key) == "b":
+                content = 'script[' + str(pos) + '] = [f(fx.set_rgb, fixtures=["rgb6"], values=fx.white(), update=True, autoOff=0.1)] #' + str(key) + "\n"
 
 
             else:

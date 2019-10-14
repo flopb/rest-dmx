@@ -9,7 +9,7 @@ def runScript(file_name, startpos, script, duration):
     mixer.music.load(file_name)
     # mixer.music.set_pos(5)
     mixer.music.play(0, startpos / 1000)
-
+    print("-----START-----")
     if startpos != 0:
         for key in script.keys():
             if (str(key)[0] == "a"):

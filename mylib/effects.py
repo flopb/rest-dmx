@@ -121,13 +121,35 @@ class FX:
 
     def mh_strobe(self, fixture, color, speed, update=True):
         fixtures = self.dmx.get_all_fixtures(filter=fixture)
+        speed += 16
         for fixture in fixtures:
             self.mh_set_color(fixture, color, False)
-            speed += 16
             if speed > 131:
                 speed = 131
 
             self.dmx.setFixtureValues(fixture, {"5": speed})
+        if update:
+            self.dmx.update(fixtures=fixtures)
+
+    def mh_strobe_off(self, fixture, update=True):
+        fixtures = self.dmx.get_all_fixtures(filter=fixture)
+        for fixture in fixtures:
+            self.dmx.setFixtureValues(fixture, {"5": 8})
+        if update:
+            self.dmx.update(fixtures=fixtures)
+
+    #speed has to be between 128-189 (fast2slow) or 194-255 (slow2fast)
+    def mh_color_rotate_on(self, fixture, speed, update=True):
+        fixtures = self.dmx.get_all_fixtures(filter=fixture)
+        for fixture in fixtures:
+            self.dmx.setFixtureValues(fixture, {"3": speed})
+        if update:
+            self.dmx.update(fixtures=fixtures)
+
+    def mh_color_rotate_off(self, fixture, update=True):
+        fixtures = self.dmx.get_all_fixtures(filter=fixture)
+        for fixture in fixtures:
+            self.dmx.setFixtureValues(fixture, {"3": 190})
         if update:
             self.dmx.update(fixtures=fixtures)
 
