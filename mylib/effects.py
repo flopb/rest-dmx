@@ -36,14 +36,14 @@ class FX:
         if update:
             self.dmx.update(fixtures=fixtures)
 
-    def mh_set_gobo(self, fixture, name, update=True):
+    def mh_set_gobo(self, fixture="gobo", name="spot", update=True):
         fixtures = self.dmx.get_all_fixtures(filter=fixture)
         for fixture in fixtures:
             self.dmx.setFixtureValues(fixture, {"4": self.mh_gobos.get(name, 80)})
         if update:
             self.dmx.update(fixtures=fixtures)
 
-    def mh_fade_out(self, fixtures=None, speed=20, limit=0,steppingtime=0.01):
+    def mh_fade_out(self, fixtures="gobo", speed=20, limit=0,steppingtime=0.01):
         if type(fixtures) is str or fixtures is None:
             fixtures = self.dmx.get_all_fixtures(fixtures)
 
@@ -64,7 +64,7 @@ class FX:
 
         return True
 
-    def mh_fade_in(self, fixtures=None, color=None, speed=20, limit=255, start_brightness=0, steppingtime=0.01):
+    def mh_fade_in(self, fixtures="gobo", color=None, speed=20, limit=255, start_brightness=0, steppingtime=0.01):
         if type(fixtures) is str or fixtures is None:
             fixtures = self.dmx.get_all_fixtures(fixtures)
 
