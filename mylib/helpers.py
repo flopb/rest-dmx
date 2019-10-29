@@ -2,9 +2,16 @@ from pygame import mixer  # Load the required library
 import threading
 import urllib.request
 
-def runScript(file_name, startpos, script, duration):
-    #content = urllib.request.urlopen("http://desktop-4iq6unj:8080/fadein").read()
-    #print("Stopping VIrtual DJ:", content)
+virtualdj_running=True
+def runScript(file_name, startpos, script, duration, dmx):
+    global virtualdj_running
+    try:
+        if virtualdj_running:
+            content = urllib.request.urlopen("http://desktop-4iq6unj:8080/fadeout",timeout=1).read()
+            virtualdj_running = False
+            print("Stopping VIrtual DJ:", content)
+    except:
+        pass
     mixer.init()
     mixer.music.load(file_name)
     # mixer.music.set_pos(5)
@@ -40,11 +47,20 @@ def runScript(file_name, startpos, script, duration):
                     func()
                     script[key] = "done"
 
-        #content = urllib.request.urlopen("http://desktop-4iq6unj:8080/fadeout").read()
-        # print("Starting VIrtual DJ:", content)
+    try:
+        dmx.activateAutoMode()
+        if not virtualdj_running:
+            content = urllib.request.urlopen("http://desktop-4iq6unj:8080/fadein", timeout=1).read()
+            virtualdj_running = True
+            print("Starting VIrtual DJ:", content)
+    except:
+        pass
 
 def stop(dmx):
-    values = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0}
-    dmx.set_all_rgb(values)
-    # dmx.update()
-    mixer.music.stop()
+    try:
+        values = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0}
+        dmx.set_all_rgb(values)
+        dmx.update()
+        mixer.music.stop()
+    except:
+        pass

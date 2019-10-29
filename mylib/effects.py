@@ -12,10 +12,16 @@ class FX:
                          "jspiral": 64, "jstar": 72, "jspot": 80, "jflower": 88, "jdotrings": 96, "jmudball": 104, "jpuzzle": 112,
                          "jbubbles": 120}
 
+    def mh_reset(self, fixture="gobo"):
+            fixtures = self.dmx.get_all_fixtures(filter=fixture)
+            for fixture in fixtures:
+                self.dmx.setFixtureValues(fixture, {"1": 175, "2": 255, "3": 0, "4": 16, "5": 10, "6": 255, "7": 125, "8": 0, "9":0})
+                self.dmx.update(fixtures=fixtures)
+
     def mh_move_to(self, fixture, rotation, tilt, speed, autoOn=True, update=True, autoOffAfter=False):
         fixtures = self.dmx.get_all_fixtures(filter=fixture)
         for fixture in fixtures:
-            values = {"1": rotation, "2": tilt, "7": speed}
+            values = {"1": rotation, "2": tilt, "7": speed, "8":0}
             if autoOn:
                 self.mh_on(fixture)
             self.dmx.setFixtureValues(fixture, values)
@@ -27,19 +33,19 @@ class FX:
             for fixture in fixtures:
                 self.mh_off(fixture)
 
-    def mh_set_start(self, fixture, rotation, tilt, autoOff=True, update=True, speed=50):
+    def mh_set_start(self, fixture="gobo", rotation=0, tilt=0, autoOff=True, update=True, speed=50):
         fixtures = self.dmx.get_all_fixtures(filter=fixture)
         for fixture in fixtures:
             if autoOff:
                 self.mh_off(fixture)
-            self.dmx.setFixtureValues(fixture, {"1": rotation, "2": tilt, "5": 0, "7": speed})
+            self.dmx.setFixtureValues(fixture, {"1": rotation, "2": tilt, "5": 0, "7": speed, "8":0, "9": 0})
         if update:
             self.dmx.update(fixtures=fixtures)
 
     def mh_set_gobo(self, fixture="gobo", name="spot", update=True):
         fixtures = self.dmx.get_all_fixtures(filter=fixture)
         for fixture in fixtures:
-            self.dmx.setFixtureValues(fixture, {"4": self.mh_gobos.get(name, 80)})
+            self.dmx.setFixtureValues(fixture, {"4": self.mh_gobos.get(name, 80), "8":0})
         if update:
             self.dmx.update(fixtures=fixtures)
 
@@ -108,14 +114,14 @@ class FX:
     def mh_off(self, fixture="gobo", update=True):
         fixtures = self.dmx.get_all_fixtures(filter=fixture)
         for fixture in fixtures:
-            self.dmx.setFixtureValues(fixture, {"5": 1})
+            self.dmx.setFixtureValues(fixture, {"5": 1, "8":0})
         if update:
             self.dmx.update(fixtures=fixtures)
 
     def mh_on(self, fixture, update=True):
         fixtures = self.dmx.get_all_fixtures(filter=fixture)
         for fixture in fixtures:
-            self.dmx.setFixtureValues(fixture, {"5": 8})
+            self.dmx.setFixtureValues(fixture, {"5": 8, "8":0})
         if update:
             self.dmx.update(fixtures=fixtures)
 
@@ -290,6 +296,16 @@ class FX:
         values = {"1": 201, "2": color, "3": speed, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0}
         for fixture in fixtures:
             self.dmx.setFixtureValues(fixture, values)
+        return True
+
+    def rgb_pulse(self, fixtures, color="all", speed=255):
+        if color in self.strobe_colors.keys():
+            color = self.strobe_colors.get(color)
+
+        values = {"1": 101, "2": color, "3": speed, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0}
+        for fixture in fixtures:
+            self.dmx.setFixtureValues(fixture, values)
+        self.dmx.update()
         return True
 
 

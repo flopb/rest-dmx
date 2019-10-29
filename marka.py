@@ -2,13 +2,13 @@ from pygame import mixer  # Load the required library
 import keyboard
 import random
 
-startpos = 53000
-duration = 35 000
+startpos = 242150
+duration = 35000
 
 ## Set filename of music-title
 #file_name = "./sounds/Culcha_Candela_Monsta.mp3"
 file_name = "./sounds/LMFAO_party_rock_anthem.mp3"
-#file_name = "./sounds/Alice_Cooper_Feed_My_Frankenstein.mp3"
+#file_name = "./sounds/Alice_Cooper_Feed_My_Frankenstein.mp3"szdz
 #file_name = "./sounds/intro.mp3"
 mixer.init()
 mixer.music.load(file_name)
@@ -25,7 +25,7 @@ def show_positions():
     print("Recorded positions:", positions)
 
 def save_script():
-    colors = ["red", "blue", "green"]
+    colors = ["violet", "blue"]
     color = random.choice(colors)
     previousColor = None
     with open("./marka_script.py", "w+") as file:
@@ -35,20 +35,22 @@ def save_script():
             if  key == "strg down":
                 color = "white"
 
-            if key == "1":
-                content = 'script[' + str(pos) + '] = [f(fx.blackout)] #' + str(key) + "\n"
+            if str(key) == "right shift":
+                content = 'script[' + str(pos) + '] = [f(fx.fade_out, fixtures=["rgb4", "rgb5", "rgb6"])] #' + str(key) + "\n"
+            elif str(key) == "1":
+                content = 'script[' + str(pos) + '] = [f(fx.fade_in, fixtures=["rgb2"], color=fx.blue())] #' + str(key) + "\n"
             elif key == "2":
-                content = 'script[' + str(pos) + '] = [f(fx.racer, color_brgbw=[255, 255, 0, 0, 0], splittime=0.1, laps=1, reverse=False)] #' + str(key) + "\n"
+                content = 'script[' + str(pos) + '] = [f(fx.fade_in, fixtures=["rgb3"], color=fx.blue())] #' + str(key) + "\n"
             elif key == "t":
                 content = 'script["a' + str(pos) + '"] = [f(s.speak, who=["paulinchen"], minmax=[350,450])] #' + str(key) + "\n"
             elif key == "z":
                 content = 'script["a' + str(pos) + '"] = [f(s.stop, who=["paulinchen"])] #' + str(key) + "\n"
             elif key == "d":
-                content = 'script["a' + str(pos) + '"] = [f(s.speak, who=["paulinchen"], minmax=[350,500])] #' + str(key) + "\n"
+                content = 'script["a' + str(pos) + '"] = [f(s.speak, who=["paulinchen"], minmax=silent)] #' + str(key) + "\n"
             elif key == "s":
-                content = 'script["a' + str(pos) + '"] = [f(s.speak, who=["paulinchen"], minmax=[300,450])] #' + str(key) + "\n"
+                content = 'script["a' + str(pos) + '"] = [f(s.speak, who=["paulinchen"], minmax=medium)] #' + str(key) + "\n"
             elif key == "a":
-                content = 'script["a' + str(pos) + '"] = [f(s.speak, who=["paulinchen"], minmax=[150,350])] #' + str(key) + "\n"
+                content = 'script["a' + str(pos) + '"] = [f(s.speak, who=["paulinchen"], minmax=loud)] #' + str(key) + "\n"
             elif str(key) == "nach-oben":
                 content = 'script[' + str(pos) + '] = [f(fx.set_front_rgb, values=fx.' + color + '(), update=True, autoOff=False)] #' + str(key) + "\n"
             elif str(key) == "nach-unten":
@@ -62,15 +64,15 @@ def save_script():
             elif str(key) == "l":
                 content = 'script[' + str(pos) + '] = [f(fx.set_rgb, fixtures=["rgb4","rgb5","rgb6"], values=fx.white(), update=True, autoOff=False)] #' + str(key) + "\n"
             elif str(key) == "c":
-                content = 'script[' + str(pos) + '] = [f(fx.set_rgb, fixtures=["rgb4"], values=fx.white(), update=True, autoOff=0.1)] #' + str(key) + "\n"
+                content = 'script[' + str(pos) + '] = [f(fx.set_rgb, fixtures=["rgb7"], values=fx.white_blue(brightness), update=True, autoOff=0.1)] #' + str(key) + "\n"
             elif str(key) == "v":
-                content = 'script[' + str(pos) + '] = [f(fx.set_rgb, fixtures=["rgb5"], values=fx.white(), update=True, autoOff=0.1)] #' + str(key) + "\n"
+                content = 'script[' + str(pos) + '] = [f(fx.set_rgb, fixtures=["rgb5"], values=fx.white_blue(brightness), update=True, autoOff=0.1)] #' + str(key) + "\n"
             elif str(key) == "b":
-                content = 'script[' + str(pos) + '] = [f(fx.set_rgb, fixtures=["rgb6"], values=fx.white(), update=True, autoOff=0.1)] #' + str(key) + "\n"
+                content = 'script[' + str(pos) + '] = [f(fx.set_rgb, fixtures=["rgb8"], values=fx.white_blue(brightness), update=True, autoOff=0.1)] #' + str(key) + "\n"
 
 
             else:
-                content = 'script[' + str(pos) + '] = [f(fx.set_back_rgb, values=fx.' + color + '(), update=True, autoOff=False)] #' + str(key) + "\n"
+                content = 'script[' + str(pos) + '] = [f(fx.set_front_rgb, values=fx.' + color + '(), update=True, autoOff=False)] #' + str(key) + "\n"
             previousColor = color
             file.write(content)
 

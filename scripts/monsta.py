@@ -13,13 +13,14 @@ def play(**kwargs):
     dmx = kwargs.get("dmx")
     f = functools.partial
     fx = effects.FX(dmx)
+
     script = {}  # type: Dict[int, Union[List[partial[bool]], List[Union[partial[bool], partial[None]]], List[partial[None]]]]
     startpos = float(kwargs.get("pos"))
     duration = float(kwargs.get("duration")) if kwargs.get("duration") is not None else None
 
     ## System initial settings, change according to song
     ## Create initial mood
-
+    fx.mh_reset()
     fx.uv_off()
     fx.mh_set_start("gobo", rotation=0, tilt=0)
     fx.mh_set_gobo("gobo", "spot")
@@ -28,6 +29,115 @@ def play(**kwargs):
 
     ## Set filename of music-title
     file_name = "./sounds/Culcha_Candela_Monsta.mp3"
+    s = Servo()
+    # SPEAKING
+    silent = [350, 500]
+    medium = [300, 450]
+    loud = [150, 350]
+    script["a2256"] = [f(s.speak, who=["paulinchen"], minmax=silent)]  # d
+    script["a3004"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a5132"] = [f(s.speak, who=["paolo"], minmax=medium)]  # s
+    script["a7073"] = [f(s.stop, who=["paolo"])]  # z
+    script["a8710"] = [f(s.speak, who=["paulinchen"], minmax=silent)]  # d
+    script["a9927"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a10438"] = [f(s.speak, who=["paulinchen"], minmax=silent)]  # d
+    script["a11691"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a12260"] = [f(s.speak, who=["paulinchen"], minmax=silent)]  # d
+    script["a13632"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a14054"] = [f(s.speak, who=["paulinchen"], minmax=silent)]  # d
+    script["a15169"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a15703"] = [f(s.speak, who=["paulinchen"], minmax=medium)]  # s
+    script["a18493"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a19324"] = [f(s.speak, who=["paulinchen"], minmax=medium)]  # s
+    script["a23024"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a23198"] = [f(s.speak, who=["paulinchen"], minmax=medium)]  # s
+    script["a29496"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a30229"] = [f(s.speak, who=["paulinchen"], minmax=medium)]  # s
+    script["a37063"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a37564"] = [f(s.speak, who=["paulinchen"], minmax=medium)]  # s
+    script["a41309"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a44623"] = [f(s.speak, who=["paulinchen"], minmax=medium)]  # a
+    script["a55073"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a55392"] = [f(s.speak, who=["paulinchen"], minmax=medium)]  # a
+    script["a65632"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a66400"] = [f(s.speak, who=["paulinchen"], minmax=medium)]  # s
+    script["a69551"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a69847"] = [f(s.speak, who=["paolo"], minmax=medium)]   # s
+    script["a73290"] = [f(s.stop, who=["paolo"])]  # z
+    script["a73356"] = [f(s.speak, who=["paulinchen"], minmax=medium)]  # s
+    script["a76548"] = [f(s.stop, who=["paulinchen"])]  # z
+    #script["a76821"] = [f(s.speak, who=["paulinchen"], minmax=medium)]  # s
+    script["a76979"] = [f(s.speak, who=["paolo"], minmax=medium)]  # s
+    script["a80629"] = [f(s.stop, who=["paolo"])]  # z
+    #script["a80479"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a80680"] = [f(s.speak, who=["paulinchen","paolo"], minmax=medium)]  # s
+    script["a84158"] = [f(s.stop, who=["paulinchen","paolo"])]  # z
+    script["a84534"] = [f(s.speak, who=["paulinchen","paolo"], minmax=medium)]  # s
+    script["a91681"] = [f(s.stop, who=["paulinchen","paolo"])]  # z
+    script["a91951"] = [f(s.speak, who=["paulinchen","paolo"], minmax=medium)]  # s
+    script["a93800"] = [f(s.stop, who=["paulinchen","paolo"])]  # z
+    script["a94418"] = [f(s.speak, who=["paulinchen"], minmax=medium)]  # s
+    script["a101643"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a101745"] = [f(s.speak, who=["paulinchen"], minmax=medium)]  # a
+    script["a109541"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a109760"] = [f(s.speak, who=["paulinchen"], minmax=medium)]  # a
+    script["a110949"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a111272"] = [f(s.speak, who=["paulinchen"], minmax=medium)]  # a
+    script["a116074"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a116222"] = [f(s.speak, who=["paulinchen"], minmax=silent)]  # d
+    script["a122468"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a123412"] = [f(s.speak, who=["paulinchen"], minmax=silent)]  # d
+    script["a129603"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a130514"] = [f(s.speak, who=["paolo"], minmax=medium)]  # s
+    script["a132984"] = [f(s.stop, who=["paolo"])]  # z
+    script["a133091"] = [f(s.speak, who=["paolo"], minmax=medium)]  # s
+    script["a134760"] = [f(s.stop, who=["paolo"])]  # z
+    script["a134941"] = [f(s.speak, who=["paolo"], minmax=medium)]  # s
+    script["a138270"] = [f(s.stop, who=["paolo"])]  # z
+    script["a138392"] = [f(s.speak, who=["paolo"], minmax=medium)]  # s
+    script["a139907"] = [f(s.stop, who=["paolo"])]  # z
+    script["a140220"] = [f(s.speak, who=["paolo"], minmax=medium)]  # s
+    script["a141854"] = [f(s.stop, who=["paolo"])]  # z
+    script["a142040"] = [f(s.speak, who=["paolo"], minmax=medium)]  # s
+    script["a145574"] = [f(s.stop, who=["paolo"])]  # z
+    script["a145707"] = [f(s.speak, who=["paolo"], minmax=medium)]  # s
+    script["a147339"] = [f(s.stop, who=["paolo"])]  # z
+    script["a147517"] = [f(s.speak, who=["paolo"], minmax=medium)]  # s
+    script["a149151"] = [f(s.stop, who=["paolo"])]  # z
+    script["a149313"] = [f(s.speak, who=["paolo"], minmax=medium)]  # s
+    script["a152526"] = [f(s.stop, who=["paolo"])]  # z
+    script["a152655"] = [f(s.speak, who=["paolo"], minmax=medium)]  # s
+    script["a154339"] = [f(s.stop, who=["paolo"])]  # z
+    script["a154469"] = [f(s.speak, who=["paolo"], minmax=medium)]  # s
+    script["a156215"] = [f(s.stop, who=["paolo"])]  # z
+    script["a156404"] = [f(s.speak, who=["paolo"], minmax=medium)]  # s
+    script["a159208"] = [f(s.stop, who=["paolo"])]  # z
+    script["a159727"] = [f(s.speak, who=["paulinchen"], minmax=medium)]  # a
+    script["a167013"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a167280"] = [f(s.speak, who=["paulinchen"], minmax=medium)]  # a
+    script["a168554"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a168934"] = [f(s.speak, who=["paulinchen"], minmax=medium)]  # a
+    script["a170733"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a170929"] = [f(s.speak, who=["paulinchen"], minmax=medium)]  # a
+    script["a174279"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a174623"] = [f(s.speak, who=["paulinchen"], minmax=medium)]  # s
+    script["a175801"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a176092"] = [f(s.speak, who=["paulinchen"], minmax=medium)]  # a
+    script["a177852"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a178033"] = [f(s.speak, who=["paulinchen"], minmax=medium)]  # a
+    script["a181257"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a181858"] = [f(s.speak, who=["paulinchen"], minmax=silent)]  # d
+    script["a183137"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a183797"] = [f(s.speak, who=["paulinchen"], minmax=silent)]  # d
+    script["a185108"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a185401"] = [f(s.speak, who=["paulinchen"], minmax=silent)]  # d
+    script["a188821"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a189247"] = [f(s.speak, who=["paulinchen"], minmax=medium)]  # s
+    script["a190326"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a191046"] = [f(s.speak, who=["paulinchen"], minmax=silent)]  # d
+    script["a192158"] = [f(s.stop, who=["paulinchen"])]  # z
+    script["a192824"] = [f(s.speak, who=["paulinchen"], minmax=medium)]  # s
+    script["a195635"] = [f(s.stop, who=["paulinchen"])]  # z
 
     ## Here comes the script
     script[1378] = [f(fx.set_back_rgb, values=fx.red(), update=True, autoOff=False)]  # space
@@ -838,4 +948,4 @@ def play(**kwargs):
     script[195167] = [f(fx.set_back_rgb, values=fx.green(brightness), update=True, autoOff=False)]  # space
 
     ## Start the script now
-    runScript(file_name=file_name, startpos=startpos, script=script, duration=duration)
+    runScript(file_name=file_name, startpos=startpos, script=script, duration=duration, dmx=dmx)

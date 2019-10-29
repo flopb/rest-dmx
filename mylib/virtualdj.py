@@ -1,7 +1,9 @@
 import keyboard
 
 def fadeout():
-    keyboard.press_and_release('ctrl+g')
+    print("Got fadeout command")
+    keyboard.press_and_release('ctrl+p')
 
 def fadein():
-    keyboard.press_and_release('ctrl+p')
+    print("Got fadein command")
+    keyboard.press_and_release('ctrl+g')

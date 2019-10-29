@@ -1,3 +1,5 @@
+var API_BASE_URL = "http://raspberrypi.fritz.box:8080"
+
 function set_from_json() {
     var data = JSON.stringify([
         {
@@ -59,7 +61,7 @@ function all_off()
     var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "/set_from_json",
+    "url": API_BASE_URL + "/set_from_json",
     "method": "POST",
     "headers": {
     "Content-Type": "application/json",
@@ -80,7 +82,7 @@ function puppet()
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "http://192.168.178.53:8081/playscript?script=puppet",
+      "url": API_BASE_URL + "/playscript?script=puppet",
       "method": "GET",
       "headers": {
       }
@@ -95,7 +97,7 @@ function fogOn() {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "/set_from_json",
+      "url": API_BASE_URL + "/set_from_json",
       "method": "POST",
       "headers": {
         "Content-Type": "application/json",
@@ -114,7 +116,7 @@ function fogOff() {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "/set_from_json",
+      "url": API_BASE_URL + "/set_from_json",
       "method": "POST",
       "headers": {
         "Content-Type": "application/json",
@@ -133,7 +135,7 @@ function uv(brightness=255) {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "/set_from_json",
+      "url": API_BASE_URL + "/set_from_json",
       "method": "POST",
       "headers": {
         "Content-Type": "application/json",
@@ -153,7 +155,7 @@ function allLights(value=255) {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "/set_from_json",
+      "url": API_BASE_URL + "/set_from_json",
       "method": "POST",
       "headers": {
         "Content-Type": "application/json",
@@ -172,7 +174,7 @@ function thunder() {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "/playscript?script=lightning",
+      "url": API_BASE_URL + "/playscript?script=lightning",
       "method": "GET",
       "headers": {
         "cache-control": "no-cache"
@@ -188,7 +190,7 @@ function red() {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "/set_from_json",
+      "url": API_BASE_URL + "/set_from_json",
       "method": "POST",
       "headers": {
         "Content-Type": "application/json",
@@ -207,7 +209,7 @@ function green() {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "/set_from_json",
+      "url": API_BASE_URL + "/set_from_json",
       "method": "POST",
       "headers": {
         "Content-Type": "application/json",
@@ -226,7 +228,7 @@ function blue() {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "/set_from_json",
+      "url": API_BASE_URL + "/set_from_json",
       "method": "POST",
       "headers": {
         "Content-Type": "application/json",
@@ -245,7 +247,7 @@ function video() {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "/playscript?script=video",
+      "url": API_BASE_URL + "/playscript?script=video",
       "method": "GET",
       "headers": {
         "cache-control": "no-cache"
@@ -261,7 +263,7 @@ function video2() {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "/playscript?script=video2",
+      "url": API_BASE_URL + "/playscript?script=video2",
       "method": "GET",
       "headers": {
         "cache-control": "no-cache"
@@ -277,7 +279,7 @@ function hue_normal() {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "http://192.168.178.46/api/xtndDDnn4UblMG-JH1uu6ka8HiouI9Wa66liRYly/groups/0/action",
+      "url": API_BASE_URL + "/api/xtndDDnn4UblMG-JH1uu6ka8HiouI9Wa66liRYly/groups/0/action",
       "method": "PUT",
       "headers": {
       },
@@ -294,7 +296,7 @@ function hue_red() {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "http://192.168.178.46/api/xtndDDnn4UblMG-JH1uu6ka8HiouI9Wa66liRYly/groups/0/action",
+      "url": API_BASE_URL + "/api/xtndDDnn4UblMG-JH1uu6ka8HiouI9Wa66liRYly/groups/0/action",
       "method": "PUT",
       "headers": {
       },
@@ -311,7 +313,7 @@ function black_widow_entrance() {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "http://192.168.178.46/api/xtndDDnn4UblMG-JH1uu6ka8HiouI9Wa66liRYly/lights/14/state",
+      "url": API_BASE_URL + "/api/xtndDDnn4UblMG-JH1uu6ka8HiouI9Wa66liRYly/lights/14/state",
       "method": "PUT",
       "headers": {
       },
@@ -328,7 +330,7 @@ function hue_entry_bulb_off() {
     var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://192.168.178.46/api/xtndDDnn4UblMG-JH1uu6ka8HiouI9Wa66liRYly/lights/14/state",
+    "url": API_BASE_URL + "/api/xtndDDnn4UblMG-JH1uu6ka8HiouI9Wa66liRYly/lights/14/state",
     "method": "PUT",
     "headers": {},
     "processData": false,
@@ -348,7 +350,7 @@ function doorbell_button() {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "/doorbell",
+      "url": API_BASE_URL + "/doorbell",
       "method": "GET",
       "headers": {
         "cache-control": "no-cache"
@@ -370,7 +372,7 @@ function doorbell() {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "/doorbell",
+      "url": API_BASE_URL + "/doorbell",
       "method": "GET",
       "headers": {
         "cache-control": "no-cache"
@@ -390,7 +392,7 @@ function dim_up() {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://192.168.178.46/api/xtndDDnn4UblMG-JH1uu6ka8HiouI9Wa66liRYly/lights/14/state",
+            "url": API_BASE_URL + "/api/xtndDDnn4UblMG-JH1uu6ka8HiouI9Wa66liRYly/lights/14/state",
             "method": "PUT",
             "headers": {},
             "processData": false,
@@ -412,7 +414,7 @@ function resetAll() {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "http://192.168.178.53:8081",
+      "url": API_BASE_URL + "/",
       "method": "GET",
       "headers": {
         "cache-control": "no-cache",
@@ -435,7 +437,7 @@ function colorChangerPlus()
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "http://192.168.178.53:8081/set_from_json",
+      "url": API_BASE_URL + "/set_from_json",
       "method": "POST",
       "headers": {
         "Content-Type": "application/json",
@@ -460,7 +462,7 @@ function colorChangerMinus()
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "http://192.168.178.53:8081/set_from_json",
+      "url": API_BASE_URL + "/set_from_json",
       "method": "POST",
       "headers": {
         "Content-Type": "application/json",
@@ -480,7 +482,7 @@ function play_script(scriptname) {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "http://192.168.178.53:8080/playscript?script=" + scriptname,
+      "url": API_BASE_URL + "/playscript?script=" + scriptname,
       "method": "GET",
       "headers": {
         "cache-control": "no-cache",
@@ -497,7 +499,7 @@ function puppet_off() {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "http://192.168.178.53:8081/set_from_json",
+      "url": API_BASE_URL + "/set_from_json",
       "method": "POST",
       "headers": {
         "Content-Type": "application/json",

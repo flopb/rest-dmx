@@ -1,5 +1,6 @@
 import usb  # This is pyusb
 import copy
+import random
 
 class uDMX():
     SingleChannelModeFlag = 1
@@ -38,6 +39,32 @@ class uDMX():
     def resetFixtures(self):
         self.initFixtures()
         self.update()
+
+    def activateAutoMode(self):
+        print("Activate automode")
+        for fixture in ["rgb4", "rgb5", "rgb6"]:
+            color_value = random.randint(40, 205)
+            values = {"1": 155, "2": color_value, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0}
+            self.setFixtureValues(fixture, values)
+            self.update(fixture)
+
+        for fixture in ["rgb1", "rgb2", "rgb3"]:
+            color_value = random.randint(40, 205)
+            values = {"1": 102, "2": color_value, "3": 255, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0}
+            self.setFixtureValues(fixture, values)
+            self.update(fixture)
+
+        for fixture in self.get_all_fixtures("gobo"):
+            color_value = random.randint(40, 205)
+            effect_type = random.randint(0, 255)
+            values = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 251, "9": effect_type}
+            self.setFixtureValues(fixture, values)
+            self.update(fixture)
+
+        self.setFixtureValues("uv", {"1": 255, "2": 255, "3": 255, "4": 255})
+        self.update(fixtures="uv")
+
+
 
     def addFixture(self, name, ch_start, ch_end, default_values=[]):
         self.fixtures[name] = {}

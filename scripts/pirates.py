@@ -1085,5 +1085,5 @@ def play(**kwargs):
     script["a457715"] = [f(s.stop, who=["paulinchen"])]  # z
 
 
-    runScript(file_name=file_name,startpos=startpos,script=script,duration=duration)
+    runScript(file_name=file_name,startpos=startpos,script=script,duration=duration, dmx=dmx)
 

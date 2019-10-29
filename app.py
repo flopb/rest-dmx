@@ -23,13 +23,18 @@ def default():
     dmx.resetFixtures()
     return jsonify(dmx.fixtures)
 
-@app.route('/fadeout')
+@app.route('/auto', methods=["GET"])
+def auto():
+    dmx.activateAutoMode()
+    return jsonify("ok")
+
+@app.route('/fadeout', methods=["GET"])
 def fadeout():
     from mylib.virtualdj import fadeout
     fadeout()
     return jsonify("ok")
 
-@app.route('/fadein')
+@app.route('/fadein', methods=["GET"])
 def fadein():
     from mylib.virtualdj import fadein
     fadein()
