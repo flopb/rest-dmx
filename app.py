@@ -23,6 +23,18 @@ def default():
     dmx.resetFixtures()
     return jsonify(dmx.fixtures)
 
+@app.route('/ring')
+def ring():
+    from pygame import mixer
+    file_name = "./sounds/doorbell.wav"
+    mixer.init()
+    mixer.music.load(file_name)
+    # mixer.music.set_pos(5)
+    mixer.music.play(0)
+    sleep(10)
+    mixer.music.fadeout(5000)
+    return jsonify("ok")
+
 @app.route('/auto', methods=["GET"])
 def auto():
     dmx.activateAutoMode()

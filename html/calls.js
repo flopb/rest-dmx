@@ -372,7 +372,7 @@ function doorbell() {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": API_BASE_URL + "/doorbell",
+      "url": API_BASE_URL + "/ring",
       "method": "GET",
       "headers": {
         "cache-control": "no-cache"
