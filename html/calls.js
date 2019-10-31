@@ -1,5 +1,6 @@
 var API_BASE_URL = "http://raspberrypi.fritz.box:8080"
 
+
 function set_from_json() {
     var data = JSON.stringify([
         {
@@ -383,7 +384,7 @@ function doorbell() {
     });
 
     hue_counter = 0
-    dim_up()
+    //dim_up()
 
 
 }
