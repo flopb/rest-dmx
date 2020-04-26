@@ -78,6 +78,39 @@ function all_off()
     });
 }
 
+function shower_on()
+{
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": API_BASE_URL + "/shower_on",
+      "method": "GET",
+      "headers": {
+      }
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+}
+
+function shower_off()
+{
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": API_BASE_URL + "/shower_off",
+      "method": "GET",
+      "headers": {
+      }
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+}
+
+
 function puppet()
 {
     var settings = {

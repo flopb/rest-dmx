@@ -1,2 +1,7 @@
+cherrypy
+flask
 pyusb
+Adafruit_PCA9685
+RPi.GPIO
 pygame
+requests

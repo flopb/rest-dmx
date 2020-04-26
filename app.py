@@ -2,6 +2,11 @@ from flask import Flask, jsonify, request
 from mylib.udmx import uDMX
 from mylib.pwmdriver import Servo
 import importlib
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BCM)
+RELAIS_1_GPIO = 17
+GPIO.setup(RELAIS_1_GPIO, GPIO.OUT)
+
 app = Flask(__name__)
 try:
     dmx = uDMX()
@@ -22,6 +27,17 @@ process = None
 def default():
     dmx.resetFixtures()
     return jsonify(dmx.fixtures)
+
+@app.route('/shower_off')
+def shower_off():
+    GPIO.output(RELAIS_1_GPIO, GPIO.HIGH)
+    return "foo"
+
+@app.route('/shower_on')
+def shower_on():
+    GPIO.output(RELAIS_1_GPIO, GPIO.LOW)
+    return "bar"
+
 
 @app.route('/ring')
 def ring():
@@ -167,4 +183,4 @@ def health():
     return "foobar"
 
 if __name__ == '__main__':
-    app.run(host='localhost',port=8081, debug=True)
+    app.run(host='0.0.0.0',port=8081, debug=True)
